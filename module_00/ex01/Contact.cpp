@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:55 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/25 16:44:43 by sperron          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:54:44 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ std::string Contact::GetSecret(void) const
 	return (this->_secret);
 }
 
+int Contact::GetIndex(void) const
+{
+	return (this->_index);
+}
+
 // Setter
 void Contact::SetFirstName(std::string str)
 {
@@ -74,4 +79,19 @@ void Contact::SetNumphone(std::string str)
 void Contact::SetSecret(std::string str)
 {
 	this->_secret = str;
+}
+
+void Contact::SetIndex(int id)
+{
+	this->_index = id;
+}
+
+void Contact::Clear()
+{
+	this->_index = 0;
+    this->_firstname.clear();
+    this->_lastname.clear();
+    this->_nickname.clear();
+    this->_numphone.clear();
+    this->_secret.clear();
 }

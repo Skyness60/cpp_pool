@@ -54,8 +54,5 @@ done:
 	done
 	@echo " terminé !\033[0m"
 
-dev: CFLAG += -DDEBUG
-dev: $(OBJ)
-	@$(COMP) $(CFLAG) $(OBJ) -o $(NAME)
 
 .PHONY: all clean fclean re progress_bar done dev

@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:32 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/25 16:44:55 by sperron          ###   ########.fr       */
+/*   Updated: 2024/11/26 12:55:27 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 // class
 class Contact {
 	private:
+		int _index;
 		std::string _firstname;
 		std::string _lastname;
 		std::string _nickname;
@@ -33,12 +34,15 @@ class Contact {
 		std::string GetNickName() const;
 		std::string GetNumphone() const;
 		std::string GetSecret() const;
+		int GetIndex() const;
 
 		void SetFirstName(std::string str);
 		void SetLastName(std::string str);
 		void SetNickName(std::string str);
 		void SetNumphone(std::string str);
 		void SetSecret(std::string str);
+		void SetIndex(int index);
+		void Clear();
 };
 
 // function
