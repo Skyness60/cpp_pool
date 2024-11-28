@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:55 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/26 12:54:44 by sperron          ###   ########.fr       */
+/*   Updated: 2024/11/28 16:11:45 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,70 +23,69 @@ Contact::~Contact(void)
 	return;
 }
 
-
 // Getter
-std::string Contact::GetFirstName(void) const
+std::string Contact::getFirstName(void) const
 {
 	return (this->_firstname);
 }
 
-std::string Contact::GetLastName(void) const
+std::string Contact::getLastName(void) const
 {
 	return (this->_lastname);
 }
 
-std::string Contact::GetNickName(void) const
+std::string Contact::getNickName(void) const
 {
 	return (this->_nickname);
 }
 
-std::string Contact::GetNumphone(void) const
+std::string Contact::getNumphone(void) const
 {
 	return (this->_numphone);
 }
 
-std::string Contact::GetSecret(void) const
+std::string Contact::getSecret(void) const
 {
 	return (this->_secret);
 }
 
-int Contact::GetIndex(void) const
+int Contact::getIndex(void) const
 {
 	return (this->_index);
 }
 
 // Setter
-void Contact::SetFirstName(std::string str)
+void Contact::setFirstName(std::string str)
 {
 	this->_firstname = str;
 }
 
-void Contact::SetLastName(std::string str)
+void Contact::setLastName(std::string str)
 {
 	this->_lastname = str;
 }
 
-void Contact::SetNickName(std::string str)
+void Contact::setNickName(std::string str)
 {
 	this->_nickname = str;
 }
 
-void Contact::SetNumphone(std::string str)
+void Contact::setNumphone(std::string str)
 {
 	this->_numphone = str;
 }
 
-void Contact::SetSecret(std::string str)
+void Contact::setSecret(std::string str)
 {
 	this->_secret = str;
 }
 
-void Contact::SetIndex(int id)
+void Contact::setIndex(int id)
 {
 	this->_index = id;
 }
 
-void Contact::Clear()
+void Contact::clear()
 {
 	this->_index = 0;
     this->_firstname.clear();

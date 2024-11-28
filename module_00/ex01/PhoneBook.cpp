@@ -1,19 +1,14 @@
 #include "PhoneBook.hpp"
 
-std::string truncate(std::string str)
-{
-	if (str.size() >= 10)
-		return (str.substr(0, 7) + "...");
-	return (str);
-}
-
+// constructor && destructor
 PhoneBook::PhoneBook(void)
 {
+	std::signal(SIGINT, cleanUpAndExit);
+	std::signal(SIGQUIT, cleanUpAndExit);
 	std::system("clear");
 	this->id = 0;
 	this->numberContacts = 0;
 	std::string input;
-
 	while (true)
 	{
 		std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
@@ -26,7 +21,6 @@ PhoneBook::PhoneBook(void)
 		std::cout << "\033[1;36m" << "║ \033[1;31mEXIT\033[1;36m   - Exit              ║" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "Enter your choice: " << "\033[0m";
-
 		if (!std::getline(std::cin, input))
 		{
 			if (std::cin.eof()) {
@@ -40,12 +34,12 @@ PhoneBook::PhoneBook(void)
 		if (input == "ADD")
 		{
 			std::system("clear");
-			this->AddContact();
+			this->addContact();
 		}
 		else if (input == "SEARCH")
 		{
 			std::system("clear");
-			this->SearchContact();
+			this->searchContact();
 		}
 		else if (input == "EXIT")
 		{
@@ -60,12 +54,12 @@ PhoneBook::PhoneBook(void)
 	}
 }
 
-
 PhoneBook::~PhoneBook(void)
 {
 	return;
 }
 
+//getter
 std::string PhoneBook::getInput(const std::string& prompt) {
 	std::string str;
 	std::cout << "\033[1;36m" << prompt << "\033[0m" << std::endl;
@@ -78,30 +72,19 @@ std::string PhoneBook::getInput(const std::string& prompt) {
 	}
 	return str;
 }
-#include <stdio.h>
-void PhoneBook::ReindexContacts()
-{
-	int contactIndex = 1;
-	for (int i = 0; i < 8; i++) {
-		if (!this->_contacts[i].GetFirstName().empty()) {
-			this->_contacts[i].SetIndex(contactIndex++);
-			printf("index : %d\n", this->_contacts[i].GetIndex());
-		}
-	}
-}
 
-
-void PhoneBook::AddContact(void)
+// add && remove && search
+void PhoneBook::addContact(void)
 {
 	Contact instance;
-	instance.SetFirstName(getInput("First Name"));
-	instance.SetLastName(getInput("Last Name"));
-	instance.SetNickName(getInput("Nick Name"));
-	instance.SetNumphone(getInput("Phone Number"));
-	instance.SetSecret(getInput("shhhhhh secret ..."));
+	instance.setFirstName(getInput("First Name"));
+	instance.setLastName(getInput("Last Name"));
+	instance.setNickName(getInput("Nick Name"));
+	instance.setNumphone(getInput("Phone Number"));
+	instance.setSecret(getInput("shhhhhh secret ..."));
 	bool added = false;
 	for (int i = 0; i < 8; i++) {
-		if (this->_contacts[i].GetFirstName().empty()) {
+		if (this->_contacts[i].getFirstName().empty()) {
 			this->_contacts[i] = instance;
 			added = true;
 			break;
@@ -114,29 +97,28 @@ void PhoneBook::AddContact(void)
 	if (this->numberContacts < 8) {
 		this->numberContacts++;
 	}
-	ReindexContacts();
+	reIndexContacts();
 	std::cout << std::endl << "\033[1;32m" << "Contact Added ✓" << "\033[0m" << std::endl;
 }
 
-void PhoneBook::RemoveContact(int index)
+void PhoneBook::removeContact(int index)
 {
-	if (index < 0 || index >= 8 || this->_contacts[index].GetFirstName().empty()) {
+	if (index < 0 || index >= 8 || this->_contacts[index].getFirstName().empty()) {
 		std::cout << "\033[1;31m" << "Invalid index or contact does not exist." << "\033[0m" << std::endl;
 		return;
 	}
 	for (int i = index; i < 7; i++) {
 		this->_contacts[i] = this->_contacts[i + 1];
 	}
-	this->_contacts[7].Clear();
+	this->_contacts[7].clear();
 	this->numberContacts--;
-	ReindexContacts();
+	reIndexContacts();
 	std::cout << "\033[1;32m" << "Contact removed successfully!" << "\033[0m" << std::endl;
 	std::system("clear");
-	this->SearchContact();
+	this->searchContact();
 }
 
-
-void PhoneBook::SearchContact(void)
+void PhoneBook::searchContact(void)
 {
 	std::string str;
 
@@ -155,12 +137,12 @@ void PhoneBook::SearchContact(void)
 		std::cout << "|" << std::setw(9) << "Nick Name" << std::setw(2) << "|" << "\033[0m" << std::endl;
 		std::cout << "\033[1;34m" << "├──────────┼──────────┼──────────┼──────────┤" << "\033[0m" << std::endl;
 		for (int i = 0; i < 8; i++) {
-			if (!this->_contacts[i].GetFirstName().empty()) {
+			if (!this->_contacts[i].getFirstName().empty()) {
 				Contact contact = this->_contacts[i];
-				std::cout << "\033[1;34m" << "|" << std::setw(10) << std::right << contact.GetIndex();
-				std::cout << "|" << std::setw(10) << std::right << truncate(contact.GetFirstName());
-				std::cout << "|" << std::setw(10) << std::right << truncate(contact.GetLastName());
-				std::cout << "|" << std::setw(10) << std::right << truncate(contact.GetNickName()) << "|" << "\033[0m" << std::endl;
+				std::cout << "\033[1;34m" << "|" << std::setw(10) << std::right << contact.getIndex();
+				std::cout << "|" << std::setw(10) << std::right << truncate(contact.getFirstName());
+				std::cout << "|" << std::setw(10) << std::right << truncate(contact.getLastName());
+				std::cout << "|" << std::setw(10) << std::right << truncate(contact.getNickName()) << "|" << "\033[0m" << std::endl;
 			}
 		}
 		std::cout << "\033[1;34m" << "└──────────┴──────────┴──────────┴──────────┘" << "\033[0m" << std::endl;
@@ -183,14 +165,14 @@ void PhoneBook::SearchContact(void)
 				return;
 			}
 
-			if (str.size() == 1 && str[0] >= '1' && str[0] <= '8' && !this->_contacts[str[0] - '1'].GetFirstName().empty())
+			if (str.size() == 1 && str[0] >= '1' && str[0] <= '8' && !this->_contacts[str[0] - '1'].getFirstName().empty())
 			{
 				Contact &contact = this->_contacts[str[0] - '1'];
-				std::cout << "\033[1;33m" << "→ " << "First Name : " << "\033[1;36m" << contact.GetFirstName() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Last Name : " << "\033[1;36m" << contact.GetLastName() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Nick Name : " << "\033[1;36m" << contact.GetNickName() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Phone Number : " << "\033[1;36m" << contact.GetNumphone() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Secret : " << "\033[1;36m" << contact.GetSecret() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "First Name : " << "\033[1;36m" << contact.getFirstName() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Last Name : " << "\033[1;36m" << contact.getLastName() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Nick Name : " << "\033[1;36m" << contact.getNickName() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Phone Number : " << "\033[1;36m" << contact.getNumphone() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Secret : " << "\033[1;36m" << contact.getSecret() << "\033[0m" << std::endl;
 
 				while (true)
 				{
@@ -215,12 +197,12 @@ void PhoneBook::SearchContact(void)
 
 					if (str == "MODIFY")
 					{
-						this->ModifyContact(contact);
+						this->modifyContact(contact);
 						return ;
 					}
 					else if (str == "REMOVE")
 					{
-						RemoveContact(contact.GetIndex() - 1);
+						removeContact(contact.getIndex() - 1);
 						return;
 					}
 					else if (str == "FINISH")
@@ -231,7 +213,7 @@ void PhoneBook::SearchContact(void)
 					else if (str == "BACK")
 					{
 						std::system("clear");
-						SearchContact();
+						searchContact();
 						return ;
 					}
 					else
@@ -252,29 +234,53 @@ void PhoneBook::SearchContact(void)
 	}
 }
 
-void PhoneBook::ModifyContact(Contact &contact)
+void PhoneBook::modifyContact(Contact &contact)
 {
 	std::string str;
 
-	std::cout << "\033[1;36m" << "Modify First Name (current: " << contact.GetFirstName() << "): " << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "Modify First Name (current: " << contact.getFirstName() << "): " << "\033[0m" << std::endl;
 	if (std::getline(std::cin, str) && !str.empty())
-		contact.SetFirstName(str);
+		contact.setFirstName(str);
 
-	std::cout << "\033[1;36m" << "Modify Last Name (current: " << contact.GetLastName() << "): " << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "Modify Last Name (current: " << contact.getLastName() << "): " << "\033[0m" << std::endl;
 	if (std::getline(std::cin, str) && !str.empty())
-		contact.SetLastName(str);
+		contact.setLastName(str);
 
-	std::cout << "\033[1;36m" << "Modify Nick Name (current: " << contact.GetNickName() << "): " << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "Modify Nick Name (current: " << contact.getNickName() << "): " << "\033[0m" << std::endl;
 	if (std::getline(std::cin, str) && !str.empty())
-		contact.SetNickName(str);
+		contact.setNickName(str);
 
-	std::cout << "\033[1;36m" << "Modify Phone Number (current: " << contact.GetNumphone() << "): " << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "Modify Phone Number (current: " << contact.getNumphone() << "): " << "\033[0m" << std::endl;
 	if (std::getline(std::cin, str) && !str.empty())
-		contact.SetNumphone(str);
+		contact.setNumphone(str);
 
-	std::cout << "\033[1;36m" << "Modify Secret (current: " << contact.GetSecret() << "): " << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "Modify Secret (current: " << contact.getSecret() << "): " << "\033[0m" << std::endl;
 	if (std::getline(std::cin, str) && !str.empty())
-		contact.SetSecret(str);
+		contact.setSecret(str);
 
 	std::cout << std::endl << "\033[1;32m" << "Contact Modified ✓" << "\033[0m" << std::endl;
+}
+
+// utils
+void PhoneBook::reIndexContacts()
+{
+	int contactIndex = 1;
+	for (int i = 0; i < 8; i++)
+		if (!this->_contacts[i].getFirstName().empty())
+			this->_contacts[i].setIndex(contactIndex++);
+}
+
+std::string PhoneBook::truncate(std::string str)
+{
+	if (str.size() >= 10)
+		return (str.substr(0, 7) + ".");
+	return (str);
+}
+
+void PhoneBook::cleanUpAndExit(int signal)
+{
+	if (signal == SIGINT || signal == SIGQUIT)
+	{
+		return ;
+	}
 }

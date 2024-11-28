@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:32 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/26 12:55:27 by sperron          ###   ########.fr       */
+/*   Updated: 2024/11/26 14:55:03 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ class Contact {
 		Contact(void);
 		~Contact(void);
 		// Getter & Setter
-		std::string GetFirstName() const;
-		std::string GetLastName() const;
-		std::string GetNickName() const;
-		std::string GetNumphone() const;
-		std::string GetSecret() const;
-		int GetIndex() const;
+		std::string getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickName() const;
+		std::string getNumphone() const;
+		std::string getSecret() const;
+		int getIndex() const;
 
-		void SetFirstName(std::string str);
-		void SetLastName(std::string str);
-		void SetNickName(std::string str);
-		void SetNumphone(std::string str);
-		void SetSecret(std::string str);
-		void SetIndex(int index);
-		void Clear();
+		void setFirstName(std::string str);
+		void setLastName(std::string str);
+		void setNickName(std::string str);
+		void setNumphone(std::string str);
+		void setSecret(std::string str);
+		void setIndex(int index);
+		void clear();
 };
 
 // function

@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:17:30 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/25 18:09:53 by sperron          ###   ########.fr       */
+/*   Updated: 2024/11/28 16:12:04 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int main(void)
 	{
 		std::getline(std::cin, command);
 		if (command == "ADD")
-			instance.AddContact();
+			instance.addContact();
 		if (command == "SEARCH")
-			instance.SearchContact();
+			instance.searchContact();
 		if (command == "EXIT")
 			break;
 	}
