@@ -1,10 +1,10 @@
 #include "PhoneBook.hpp"
 
-// constructor && destructor
-PhoneBook::PhoneBook(void)
+// Constructor
+Module00::PhoneBook::PhoneBook(void)
 {
 	std::signal(SIGINT, cleanUpAndExit);
-	std::signal(SIGQUIT, cleanUpAndExit);
+	::signal(SIGQUIT, cleanUpAndExit);
 	std::system("clear");
 	this->id = 0;
 	this->numberContacts = 0;
@@ -12,7 +12,7 @@ PhoneBook::PhoneBook(void)
 	while (true)
 	{
 		std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
-		std::cout << "\033[1;36m" << "║        PhoneBook Menu      ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║        Module00 Menu      ║" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "║ Contacts: " << this->numberContacts << "                ║" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
@@ -44,7 +44,7 @@ PhoneBook::PhoneBook(void)
 		else if (input == "EXIT")
 		{
 			std::system("clear");
-			std::cout << "\033[1;32m" << "Exiting PhoneBook. Goodbye!" << "\033[0m" << std::endl;
+			std::cout << "\033[1;32m" << "Exiting Module00. Goodbye!" << "\033[0m" << std::endl;
 			std::exit(0);
 		}
 		else
@@ -53,14 +53,14 @@ PhoneBook::PhoneBook(void)
 		}
 	}
 }
-
-PhoneBook::~PhoneBook(void)
+// Destructor
+Module00::PhoneBook::~PhoneBook(void)
 {
 	return;
 }
 
 //getter
-std::string PhoneBook::getInput(const std::string& prompt) {
+std::string Module00::PhoneBook::getInput(const std::string& prompt) {
 	std::string str;
 	std::cout << "\033[1;36m" << prompt << "\033[0m" << std::endl;
 	while (!std::getline(std::cin, str) || str.empty()) {
@@ -74,7 +74,7 @@ std::string PhoneBook::getInput(const std::string& prompt) {
 }
 
 // add && remove && search
-void PhoneBook::addContact(void)
+void Module00::PhoneBook::addContact(void)
 {
 	Contact instance;
 	instance.setFirstName(getInput("First Name"));
@@ -101,7 +101,7 @@ void PhoneBook::addContact(void)
 	std::cout << std::endl << "\033[1;32m" << "Contact Added ✓" << "\033[0m" << std::endl;
 }
 
-void PhoneBook::removeContact(int index)
+void Module00::PhoneBook::removeContact(int index)
 {
 	if (index < 0 || index >= 8 || this->_contacts[index].getFirstName().empty()) {
 		std::cout << "\033[1;31m" << "Invalid index or contact does not exist." << "\033[0m" << std::endl;
@@ -118,7 +118,7 @@ void PhoneBook::removeContact(int index)
 	this->searchContact();
 }
 
-void PhoneBook::searchContact(void)
+void Module00::PhoneBook::searchContact(void)
 {
 	std::string str;
 
@@ -230,11 +230,11 @@ void PhoneBook::searchContact(void)
 	}
 	else
 	{
-		std::cout << "\033[1;34m" << "You don't have any contacts in your phonebook." << "\033[0m" << std::endl;
+		std::cout << "\033[1;34m" << "You don't have any contacts in your Module00." << "\033[0m" << std::endl;
 	}
 }
 
-void PhoneBook::modifyContact(Contact &contact)
+void Module00::PhoneBook::modifyContact(Contact &contact)
 {
 	std::string str;
 
@@ -262,7 +262,7 @@ void PhoneBook::modifyContact(Contact &contact)
 }
 
 // utils
-void PhoneBook::reIndexContacts()
+void Module00::PhoneBook::reIndexContacts()
 {
 	int contactIndex = 1;
 	for (int i = 0; i < 8; i++)
@@ -270,14 +270,14 @@ void PhoneBook::reIndexContacts()
 			this->_contacts[i].setIndex(contactIndex++);
 }
 
-std::string PhoneBook::truncate(std::string str)
+std::string Module00::PhoneBook::truncate(std::string str)
 {
 	if (str.size() >= 10)
 		return (str.substr(0, 7) + ".");
 	return (str);
 }
 
-void PhoneBook::cleanUpAndExit(int signal)
+void Module00::PhoneBook::cleanUpAndExit(int signal)
 {
 	if (signal == SIGINT || signal == SIGQUIT)
 	{

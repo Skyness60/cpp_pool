@@ -6,86 +6,86 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:55 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/28 16:11:45 by sperron          ###   ########.fr       */
+/*   Updated: 2024/12/02 13:56:25 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 // Constructor & Destructor
-Contact::Contact(void)
+Module00::Contact::Contact(void)
 {
 	return;
 }
 
-Contact::~Contact(void)
+Module00::Contact::~Contact(void)
 {
 	return;
 }
 
 // Getter
-std::string Contact::getFirstName(void) const
+std::string Module00::Contact::getFirstName(void) const
 {
 	return (this->_firstname);
 }
 
-std::string Contact::getLastName(void) const
+std::string Module00::Contact::getLastName(void) const
 {
 	return (this->_lastname);
 }
 
-std::string Contact::getNickName(void) const
+std::string Module00::Contact::getNickName(void) const
 {
 	return (this->_nickname);
 }
 
-std::string Contact::getNumphone(void) const
+std::string Module00::Contact::getNumphone(void) const
 {
 	return (this->_numphone);
 }
 
-std::string Contact::getSecret(void) const
+std::string Module00::Contact::getSecret(void) const
 {
 	return (this->_secret);
 }
 
-int Contact::getIndex(void) const
+int Module00::Contact::getIndex(void) const
 {
 	return (this->_index);
 }
 
 // Setter
-void Contact::setFirstName(std::string str)
+void Module00::Contact::setFirstName(std::string str)
 {
 	this->_firstname = str;
 }
 
-void Contact::setLastName(std::string str)
+void Module00::Contact::setLastName(std::string str)
 {
 	this->_lastname = str;
 }
 
-void Contact::setNickName(std::string str)
+void Module00::Contact::setNickName(std::string str)
 {
 	this->_nickname = str;
 }
 
-void Contact::setNumphone(std::string str)
+void Module00::Contact::setNumphone(std::string str)
 {
 	this->_numphone = str;
 }
 
-void Contact::setSecret(std::string str)
+void Module00::Contact::setSecret(std::string str)
 {
 	this->_secret = str;
 }
 
-void Contact::setIndex(int id)
+void Module00::Contact::setIndex(int id)
 {
 	this->_index = id;
 }
 
-void Contact::clear()
+void Module00::Contact::clear()
 {
 	this->_index = 0;
     this->_firstname.clear();

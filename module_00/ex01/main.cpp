@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:17:30 by sperron           #+#    #+#             */
-/*   Updated: 2024/11/28 16:12:04 by sperron          ###   ########.fr       */
+/*   Updated: 2024/12/02 13:52:57 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	PhoneBook instance;
+	Module00::PhoneBook instance;
 	std::string command;
 
 	while (true)
