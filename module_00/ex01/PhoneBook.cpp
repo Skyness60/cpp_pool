@@ -4,7 +4,7 @@
 Module00::PhoneBook::PhoneBook(void)
 {
 	std::signal(SIGINT, cleanUpAndExit);
-	::signal(SIGQUIT, cleanUpAndExit);
+	std::signal(SIGQUIT, cleanUpAndExit);
 	std::system("clear");
 	this->id = 0;
 	this->numberContacts = 0;
@@ -12,7 +12,7 @@ Module00::PhoneBook::PhoneBook(void)
 	while (true)
 	{
 		std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
-		std::cout << "\033[1;36m" << "║        Module00 Menu      ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║        PhoneBook Menu      ║" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "║ Contacts: " << this->numberContacts << "                ║" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
