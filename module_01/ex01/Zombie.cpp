@@ -6,21 +6,11 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:26:58 by sperron           #+#    #+#             */
-/*   Updated: 2024/12/05 12:44:24 by sperron          ###   ########.fr       */
+/*   Updated: 2024/12/05 12:35:16 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-
-// Zombie class constructor
-Zombie::Zombie(std::string name) : name(name) {
-	return ;
-}
-
-// Zombie class destructor
-Zombie::~Zombie() {
-	return ;
-}
 
 // Zombie class announce method
 void	Zombie::announce( void ) {

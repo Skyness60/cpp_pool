@@ -21,13 +21,20 @@ class Zombie {
 	// Zombie class methods
 	public:
 		// Zombie class constructor
-		Zombie(std::string name);
+		Zombie() {};
 		// Zombie class destructor
-		~Zombie();
+		~Zombie() {};
 		// Zombie class announce method
 		void announce( void );
+		// Setter for the name attribute && default name is "default_name"
+		void setName(const std::string& name) {
+			if (name.empty())
+				this->name = "default_name";
+			else
+				this->name = name;
+		}
 };
+
 // Function prototypes
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* zombieHorde( int N, std::string name );
 #endif // !ZOMBIE_HPP
