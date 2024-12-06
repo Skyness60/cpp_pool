@@ -1,9 +1,13 @@
 COMP = c++
 CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
-NAME = BRAIN
+NAME = kitty
 
-SRC = main.cpp
+SRC =	Weapon.cpp \
+		HumanB.cpp \
+		HumanA.cpp \
+		main.cpp
+
 
 OBJ = $(SRC:.cpp=.o)
 
