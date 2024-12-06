@@ -3,8 +3,55 @@
 // Constructor
 Module00::PhoneBook::PhoneBook(void)
 {
+	std::signal(SIGINT, cleanUpAndExit);
+	std::signal(SIGQUIT, cleanUpAndExit);
+	std::system("clear");
 	this->id = 0;
 	this->numberContacts = 0;
+	std::string input;
+	while (true)
+	{
+		std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║        PhoneBook Menu      ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║ Contacts: " << this->numberContacts << "                ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║ \033[1;32mADD\033[1;36m    - Add Contact       ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║ \033[1;33mSEARCH\033[1;36m - Search Contact    ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║ \033[1;31mEXIT\033[1;36m   - Exit              ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "Enter your choice: " << "\033[0m";
+		if (!std::getline(std::cin, input))
+		{
+			if (std::cin.eof()) {
+				std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+				std::exit(1);
+			}
+			std::cin.clear();
+			break;
+		}
+
+		if (input == "ADD")
+		{
+			std::system("clear");
+			this->addContact();
+		}
+		else if (input == "SEARCH")
+		{
+			std::system("clear");
+			this->searchContact();
+		}
+		else if (input == "EXIT")
+		{
+			std::system("clear");
+			std::cout << "\033[1;32m" << "Exiting Module00. Goodbye!" << "\033[0m" << std::endl;
+			std::exit(0);
+		}
+		else
+		{
+			std::cout << "\033[1;31m" << "Invalid choice. Please try again." << "\033[0m" << std::endl;
+		}
+	}
 }
 // Destructor
 Module00::PhoneBook::~PhoneBook(void)
@@ -13,26 +60,31 @@ Module00::PhoneBook::~PhoneBook(void)
 }
 
 //getter
-int Module00::PhoneBook::getNumberContacts(void) const
-{
-	return this->numberContacts;
-}
-
-Module00::Contact Module00::PhoneBook::getContact(int index) const
-{
-	if (index < 0 || index >= 8 || this->_contacts[index].getFirstName().empty()) {
-		std::cout << "\033[1;31m" << "Invalid index or contact does not exist." << "\033[0m" << std::endl;
-		return Contact();
+std::string Module00::PhoneBook::getInput(const std::string& prompt) {
+	std::string str;
+	std::cout << "\033[1;36m" << prompt << "\033[0m" << std::endl;
+	while (!std::getline(std::cin, str) || str.empty()) {
+		if (std::cin.eof()) {
+			std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+			std::exit(1);
+		}
+		std::cout << "\033[1;31m" << prompt << " cannot be empty. Please enter again:" << "\033[0m" << std::endl;
 	}
-	return this->_contacts[index];
+	return str;
 }
 
 // add && remove && search
-void Module00::PhoneBook::addContact(Contact &instance)
+void Module00::PhoneBook::addContact(void)
 {
+	Contact instance;
+	instance.setFirstName(getInput("First Name"));
+	instance.setLastName(getInput("Last Name"));
+	instance.setNickName(getInput("Nick Name"));
+	instance.setNumphone(getInput("Phone Number"));
+	instance.setSecret(getInput("shhhhhh secret ..."));
 	bool added = false;
 	for (int i = 0; i < 8; i++) {
-		if (this->_contacts[i].getFirstName().empty() || this->_contacts[i].getLastName().empty() || this->_contacts[i].getNickName().empty() || this->_contacts[i].getNumphone().empty() || this->_contacts[i].getSecret().empty()) {
+		if (this->_contacts[i].getFirstName().empty()) {
 			this->_contacts[i] = instance;
 			added = true;
 			break;
@@ -46,6 +98,7 @@ void Module00::PhoneBook::addContact(Contact &instance)
 		this->numberContacts++;
 	}
 	reIndexContacts();
+	std::cout << std::endl << "\033[1;32m" << "Contact Added ✓" << "\033[0m" << std::endl;
 }
 
 void Module00::PhoneBook::removeContact(int index)
@@ -67,28 +120,124 @@ void Module00::PhoneBook::removeContact(int index)
 
 void Module00::PhoneBook::searchContact(void)
 {
-	for (int i = 0; i < 8; i++) {
-		if (!this->_contacts[i].getFirstName().empty()) {
-			Contact contact = this->_contacts[i];
-			std::cout << "\033[1;34m" << "|" << std::setw(10) << std::right << contact.getIndex();
-			std::cout << "|" << std::setw(10) << std::right << truncate(contact.getFirstName());
-			std::cout << "|" << std::setw(10) << std::right << truncate(contact.getLastName());
-			std::cout << "|" << std::setw(10) << std::right << truncate(contact.getNickName()) << "|" << "\033[0m" << std::endl;
+	std::string str;
+
+	std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "║        SEARCH MENU         ║" << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "║ \033[1;32mID\033[1;36m    - Search Contact     ║" << "\033[0m" << std::endl;
+	std::cout << "\033[1;31m" << "║ \033[1;31mBACK\033[1;36m   - Back              ║" << "\033[0m" << std::endl;
+	std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
+
+	if (this->numberContacts > 0) {
+		std::cout << "\033[1;34m" << "┌──────────┬──────────┬──────────┬──────────┐" << "\033[0m" << std::endl;
+		std::cout << "\033[1;34m" << "|" << std::setw(7) << "Index" << std::setw(4);
+		std::cout << "|" << std::setw(10) << "First Name";
+		std::cout << "|" << std::setw(9) << "Last Name" << std::setw(2);
+		std::cout << "|" << std::setw(9) << "Nick Name" << std::setw(2) << "|" << "\033[0m" << std::endl;
+		std::cout << "\033[1;34m" << "├──────────┼──────────┼──────────┼──────────┤" << "\033[0m" << std::endl;
+		for (int i = 0; i < 8; i++) {
+			if (!this->_contacts[i].getFirstName().empty()) {
+				Contact contact = this->_contacts[i];
+				std::cout << "\033[1;34m" << "|" << std::setw(10) << std::right << contact.getIndex();
+				std::cout << "|" << std::setw(10) << std::right << truncate(contact.getFirstName());
+				std::cout << "|" << std::setw(10) << std::right << truncate(contact.getLastName());
+				std::cout << "|" << std::setw(10) << std::right << truncate(contact.getNickName()) << "|" << "\033[0m" << std::endl;
+			}
+		}
+		std::cout << "\033[1;34m" << "└──────────┴──────────┴──────────┴──────────┘" << "\033[0m" << std::endl;
+		while (true)
+		{
+			 std::cout << "\033[1;36m" << "Enter your choice: " << "\033[0m";
+			if (!std::getline(std::cin, str))
+			{
+				if (std::cin.eof()) {
+					std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+					std::exit(1);
+				}
+				std::cin.clear();
+				break;
+			}
+
+			if (str == "BACK")
+			{
+				std::system("clear");
+				return;
+			}
+
+			if (str.size() == 1 && str[0] >= '1' && str[0] <= '8' && !this->_contacts[str[0] - '1'].getFirstName().empty())
+			{
+				Contact &contact = this->_contacts[str[0] - '1'];
+				std::cout << "\033[1;33m" << "→ " << "First Name : " << "\033[1;36m" << contact.getFirstName() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Last Name : " << "\033[1;36m" << contact.getLastName() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Nick Name : " << "\033[1;36m" << contact.getNickName() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Phone Number : " << "\033[1;36m" << contact.getNumphone() << "\033[0m" << std::endl;
+				std::cout << "\033[1;33m" << "→ " << "Secret : " << "\033[1;36m" << contact.getSecret() << "\033[0m" << std::endl;
+
+				while (true)
+				{
+					std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "║        SEARCH MENU         ║" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "║ \033[1;32mMODIFY\033[1;36m   - To Edit         ║" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "║ \033[1;31mREMOVE\033[1;36m   - To Remove       ║" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "║ \033[1;31mFINISH\033[1;36m   - Return main menu║" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "║ \033[1;31mBACK\033[1;36m     - Search menu     ║" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << std::endl << "Enter your choice: " << "\033[0m";
+					if (!std::getline(std::cin, str))
+					{
+						if (std::cin.eof()) {
+							std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+							std::exit(1);
+						}
+						std::cin.clear();
+						break;
+					}
+
+					if (str == "MODIFY")
+					{
+						this->modifyContact(contact);
+						return ;
+					}
+					else if (str == "REMOVE")
+					{
+						removeContact(contact.getIndex() - 1);
+						return;
+					}
+					else if (str == "FINISH")
+					{
+						std::system("clear");
+						return;
+					}
+					else if (str == "BACK")
+					{
+						std::system("clear");
+						searchContact();
+						return ;
+					}
+					else
+					{
+						std::cout << "\033[1;31m" << "Invalid choice. Please try again." << "\033[0m" << std::endl;
+					}
+				}
+			}
+			else
+			{
+				std::cout << "\033[1;31m" << "Invalid ID. Please enter a valid ID (1-8):" << "\033[0m" << std::endl;
+			}
 		}
 	}
-}
-
-void Module00::PhoneBook::setContact(int index, Contact contact)
-{
-	if (index < 0 || index >= 8 || contact.getFirstName().empty()) {
-		std::cout << "\033[1;31m" << "Invalid index or contact does not exist." << "\033[0m" << std::endl;
-		return;
+	else
+	{
+		std::cout << "\033[1;34m" << "You don't have any contacts in your Module00." << "\033[0m" << std::endl;
 	}
-	this->_contacts[index] = contact;
 }
 
-Module00::Contact Module00::PhoneBook::modifyContact(Contact &contact, std::string str)
+void Module00::PhoneBook::modifyContact(Contact &contact)
 {
+	std::string str;
+
 	std::cout << "\033[1;36m" << "Modify First Name (current: " << contact.getFirstName() << "): " << "\033[0m" << std::endl;
 	if (std::getline(std::cin, str) && !str.empty())
 		contact.setFirstName(str);
@@ -110,8 +259,6 @@ Module00::Contact Module00::PhoneBook::modifyContact(Contact &contact, std::stri
 		contact.setSecret(str);
 
 	std::cout << std::endl << "\033[1;32m" << "Contact Modified ✓" << "\033[0m" << std::endl;
-
-	return contact;
 }
 
 // utils
@@ -121,13 +268,6 @@ void Module00::PhoneBook::reIndexContacts()
 	for (int i = 0; i < 8; i++)
 		if (!this->_contacts[i].getFirstName().empty())
 			this->_contacts[i].setIndex(contactIndex++);
-}
-
-int Module00::PhoneBook::decrementNumberContacts(void)
-{
-	if (this->numberContacts > 0)
-		this->numberContacts--;
-	return this->numberContacts;
 }
 
 std::string Module00::PhoneBook::truncate(std::string str)
