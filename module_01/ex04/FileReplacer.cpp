@@ -34,10 +34,11 @@ std::string Module01::FileReplacer::readFile()
 	else
 	{
 		std::cout << RED << BOLD << "Failed to open file: " << this->filename << RESET << std::endl;
+		std::exit(1);
 	}
 	std::clock_t end = std::clock();
-	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-	std::cout << YELLOW << BOLD << "Time taken to read file: " << duration << " seconds." << RESET << std::endl;
+	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+	std::cout << YELLOW << BOLD << "Time taken to read file: " << std::setprecision(2) << duration << " ms." << RESET << std::endl;
 	return contentFile;
 }
 
@@ -59,8 +60,8 @@ std::string Module01::FileReplacer::replaceOccurrences(const std::string& conten
 	newContent.append(contentFile, prevPos, std::string::npos);
 	std::cout << GREEN << BOLD << "Occurrences replaced successfully." << RESET << std::endl;
 	std::clock_t end = std::clock();
-	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-	std::cout << YELLOW << BOLD << "Time taken to replace occurrences: " << duration << " seconds." << RESET << std::endl;
+	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+	std::cout << YELLOW << BOLD << "Time taken to replace occurrences: " << std::setprecision(2) << duration << " ms." << RESET << std::endl;
 	return newContent;
 }
 
@@ -80,8 +81,9 @@ void Module01::FileReplacer::writeFile(const std::string& newContent)
 	else
 	{
 		std::cout << RED << BOLD << "Failed to open file for writing: " << this->filename + ".replace" << RESET << std::endl;
+		std::exit(1);
 	}
 	std::clock_t end = std::clock();
-	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-	std::cout << YELLOW << BOLD << "Time taken to write file: " << duration << " seconds." << RESET << std::endl;
+	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+	std::cout << YELLOW << BOLD << "Time taken to write file: " << std::setprecision(2) << duration << " ms." << RESET << std::endl;
 }

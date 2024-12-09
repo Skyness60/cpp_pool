@@ -3,13 +3,12 @@
 // Constructor
 Module00::PhoneBook::PhoneBook(void)
 {
-	std::signal(SIGINT, cleanUpAndExit);
-	std::signal(SIGQUIT, cleanUpAndExit);
-	std::system("clear");
+	std::cout << "\033[H\033[J";
 	this->id = 0;
 	this->numberContacts = 0;
 	std::string input;
-	while (true)
+	bool isRunning = true;
+	while (isRunning)
 	{
 		std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
 		std::cout << "\033[1;36m" << "║        PhoneBook Menu      ║" << "\033[0m" << std::endl;
@@ -25,27 +24,26 @@ Module00::PhoneBook::PhoneBook(void)
 		{
 			if (std::cin.eof()) {
 				std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
-				std::exit(1);
+				return;
 			}
 			std::cin.clear();
-			break;
+			continue;
 		}
-
 		if (input == "ADD")
 		{
-			std::system("clear");
+			std::cout << "\033[H\033[J";
 			this->addContact();
 		}
 		else if (input == "SEARCH")
 		{
-			std::system("clear");
+			std::cout << "\033[H\033[J";
 			this->searchContact();
 		}
 		else if (input == "EXIT")
 		{
-			std::system("clear");
+			std::cout << "\033[H\033[J";
 			std::cout << "\033[1;32m" << "Exiting Module00. Goodbye!" << "\033[0m" << std::endl;
-			std::exit(0);
+			isRunning = false;
 		}
 		else
 		{
@@ -66,7 +64,7 @@ std::string Module00::PhoneBook::getInput(const std::string& prompt) {
 	while (!std::getline(std::cin, str) || str.empty()) {
 		if (std::cin.eof()) {
 			std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
-			std::exit(1);
+			return "";
 		}
 		std::cout << "\033[1;31m" << prompt << " cannot be empty. Please enter again:" << "\033[0m" << std::endl;
 	}
@@ -114,7 +112,7 @@ void Module00::PhoneBook::removeContact(int index)
 	this->numberContacts--;
 	reIndexContacts();
 	std::cout << "\033[1;32m" << "Contact removed successfully!" << "\033[0m" << std::endl;
-	std::system("clear");
+	std::cout << "\033[H\033[J";
 	this->searchContact();
 }
 
@@ -122,14 +120,15 @@ void Module00::PhoneBook::searchContact(void)
 {
 	std::string str;
 
-	std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
-	std::cout << "\033[1;36m" << "║        SEARCH MENU         ║" << "\033[0m" << std::endl;
-	std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
-	std::cout << "\033[1;36m" << "║ \033[1;32mID\033[1;36m    - Search Contact     ║" << "\033[0m" << std::endl;
-	std::cout << "\033[1;31m" << "║ \033[1;31mBACK\033[1;36m   - Back              ║" << "\033[0m" << std::endl;
-	std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
+
 
 	if (this->numberContacts > 0) {
+		std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║        SEARCH MENU         ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "║ \033[1;32mID\033[1;36m    - Search Contact     ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;31m" << "║ \033[1;31mBACK\033[1;36m   - Back              ║" << "\033[0m" << std::endl;
+		std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
 		std::cout << "\033[1;34m" << "┌──────────┬──────────┬──────────┬──────────┐" << "\033[0m" << std::endl;
 		std::cout << "\033[1;34m" << "|" << std::setw(7) << "Index" << std::setw(4);
 		std::cout << "|" << std::setw(10) << "First Name";
@@ -146,86 +145,80 @@ void Module00::PhoneBook::searchContact(void)
 			}
 		}
 		std::cout << "\033[1;34m" << "└──────────┴──────────┴──────────┴──────────┘" << "\033[0m" << std::endl;
-		while (true)
+		std::cout << "\033[1;36m" << "Enter your choice: " << "\033[0m";
+		if (!std::getline(std::cin, str))
 		{
-			 std::cout << "\033[1;36m" << "Enter your choice: " << "\033[0m";
+			if (std::cin.eof()) {
+				std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+				return;
+			}
+			std::cin.clear();
+			return;
+		}
+
+		if (str == "BACK")
+		{
+			std::cout << "\033[H\033[J";
+			return;
+		}
+
+		if (str.size() == 1 && str[0] >= '1' && str[0] <= '8' && !this->_contacts[str[0] - '1'].getFirstName().empty())
+		{
+			Contact &contact = this->_contacts[str[0] - '1'];
+			std::cout << "\033[1;33m" << "→ " << "First Name : " << "\033[1;36m" << contact.getFirstName() << "\033[0m" << std::endl;
+			std::cout << "\033[1;33m" << "→ " << "Last Name : " << "\033[1;36m" << contact.getLastName() << "\033[0m" << std::endl;
+			std::cout << "\033[1;33m" << "→ " << "Nick Name : " << "\033[1;36m" << contact.getNickName() << "\033[0m" << std::endl;
+			std::cout << "\033[1;33m" << "→ " << "Phone Number : " << "\033[1;36m" << contact.getNumphone() << "\033[0m" << std::endl;
+			std::cout << "\033[1;33m" << "→ " << "Secret : " << "\033[1;36m" << contact.getSecret() << "\033[0m" << std::endl;
+
+			std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "║        SEARCH MENU         ║" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "║ \033[1;32mMODIFY\033[1;36m   - To Edit         ║" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "║ \033[1;31mREMOVE\033[1;36m   - To Remove       ║" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "║ \033[1;31mFINISH\033[1;36m   - Return main menu║" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "║ \033[1;31mBACK\033[1;36m     - Search menu     ║" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
+			std::cout << "\033[1;36m" << std::endl << "Enter your choice: " << "\033[0m";
 			if (!std::getline(std::cin, str))
 			{
 				if (std::cin.eof()) {
 					std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
-					std::exit(1);
+					return;
 				}
 				std::cin.clear();
-				break;
-			}
-
-			if (str == "BACK")
-			{
-				std::system("clear");
 				return;
 			}
 
-			if (str.size() == 1 && str[0] >= '1' && str[0] <= '8' && !this->_contacts[str[0] - '1'].getFirstName().empty())
+			if (str == "MODIFY")
 			{
-				Contact &contact = this->_contacts[str[0] - '1'];
-				std::cout << "\033[1;33m" << "→ " << "First Name : " << "\033[1;36m" << contact.getFirstName() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Last Name : " << "\033[1;36m" << contact.getLastName() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Nick Name : " << "\033[1;36m" << contact.getNickName() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Phone Number : " << "\033[1;36m" << contact.getNumphone() << "\033[0m" << std::endl;
-				std::cout << "\033[1;33m" << "→ " << "Secret : " << "\033[1;36m" << contact.getSecret() << "\033[0m" << std::endl;
-
-				while (true)
-				{
-					std::cout << "\033[1;36m" << "╔════════════════════════════╗" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "║        SEARCH MENU         ║" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "╠════════════════════════════╣" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "║ \033[1;32mMODIFY\033[1;36m   - To Edit         ║" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "║ \033[1;31mREMOVE\033[1;36m   - To Remove       ║" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "║ \033[1;31mFINISH\033[1;36m   - Return main menu║" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "║ \033[1;31mBACK\033[1;36m     - Search menu     ║" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << "╚════════════════════════════╝" << "\033[0m" << std::endl;
-					std::cout << "\033[1;36m" << std::endl << "Enter your choice: " << "\033[0m";
-					if (!std::getline(std::cin, str))
-					{
-						if (std::cin.eof()) {
-							std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
-							std::exit(1);
-						}
-						std::cin.clear();
-						break;
-					}
-
-					if (str == "MODIFY")
-					{
-						this->modifyContact(contact);
-						return ;
-					}
-					else if (str == "REMOVE")
-					{
-						removeContact(contact.getIndex() - 1);
-						return;
-					}
-					else if (str == "FINISH")
-					{
-						std::system("clear");
-						return;
-					}
-					else if (str == "BACK")
-					{
-						std::system("clear");
-						searchContact();
-						return ;
-					}
-					else
-					{
-						std::cout << "\033[1;31m" << "Invalid choice. Please try again." << "\033[0m" << std::endl;
-					}
-				}
+				this->modifyContact(contact);
+				return;
+			}
+			else if (str == "REMOVE")
+			{
+				removeContact(contact.getIndex() - 1);
+				return;
+			}
+			else if (str == "FINISH")
+			{
+				std::cout << "\033[H\033[J";
+				return;
+			}
+			else if (str == "BACK")
+			{
+				std::cout << "\033[H\033[J";
+				searchContact();
+				return;
 			}
 			else
 			{
-				std::cout << "\033[1;31m" << "Invalid ID. Please enter a valid ID (1-8):" << "\033[0m" << std::endl;
+				std::cout << "\033[1;31m" << "Invalid choice. Please try again." << "\033[0m" << std::endl;
 			}
+		}
+		else
+		{
+			std::cout << "\033[1;31m" << "Invalid ID. Please enter a valid ID (1-8):" << "\033[0m" << std::endl;
 		}
 	}
 	else
@@ -277,10 +270,3 @@ std::string Module00::PhoneBook::truncate(std::string str)
 	return (str);
 }
 
-void Module00::PhoneBook::cleanUpAndExit(int signal)
-{
-	if (signal == SIGINT || signal == SIGQUIT)
-	{
-		return ;
-	}
-}

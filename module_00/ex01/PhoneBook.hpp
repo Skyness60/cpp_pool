@@ -6,7 +6,7 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 12:02:16 by sperron           #+#    #+#             */
-/*   Updated: 2024/12/02 13:50:14 by sperron          ###   ########.fr       */
+/*   Updated: 2024/12/09 17:03:17 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #include <iomanip>
-#include <csignal>
 
 // namespace
 namespace Module00 {

@@ -6,6 +6,7 @@
 #include <ctime>
 #include <sys/stat.h>
 #include <cstdlib>
+#include <iomanip>
 #include <stdexcept>
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
