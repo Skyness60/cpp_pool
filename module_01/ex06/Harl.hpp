@@ -1,8 +1,9 @@
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#ifndef HARL_HPP
+#define HARL_HPP
 #include <iostream>
 #include <string>
-#include "Weapon.hpp"
+#include <map>
+#include <cstdlib>
 #define BLACK_BOLD "\033[1;30m"
 #define RED_BOLD "\033[1;31m"
 #define GREEN_BOLD "\033[1;32m"
@@ -13,20 +14,25 @@
 #define WHITE_BOLD "\033[1;37m"
 #define RESET "\033[0m"
 
-// class
-class HumanA {
-	// private attributes
-	private:
-		Weapon *weapon;
-		std::string name;
-	// public methods
-	public:
-		// Constructor
-		HumanA(std::string name, Weapon& weapon);
-		// Deconstructor
-		~HumanA();
-		// attack method
-		void attack();
+// enum
+enum LogLevel {
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR,
+	INVALID
 };
 
-#endif // !HUMANA_HPP
+// class Harl
+class Harl {
+	// private methods
+	private:
+		void debug(void);
+		void info(void);	
+		void warning(void);
+		void error(void);
+	// public methods
+	public:	
+		void complain(std::string level);
+};
+#endif // !HARL_HPP

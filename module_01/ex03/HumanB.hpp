@@ -13,15 +13,23 @@
 #define WHITE_BOLD "\033[1;37m"
 #define RESET "\033[0m"
 
+// class
 class HumanB {
+	// attributes private
 	private:
 		Weapon *weapon;
 		std::string name;
+	// public methods
 	public:
+		// Constructor
 		HumanB(std::string name);
+		// Deconstructor
 		~HumanB();
+		// Setter
 		void setWeapon(Weapon& weapon);
+		// Getter
 		Weapon *getWeapon();
+		// Method attack
 		void attack();
 };
 
