@@ -5,7 +5,7 @@ void Harl::debug() {
 }
 
 void Harl::info() {
-    std::cout << "I cannot believe adding extra bacon costs more money." << std::endl << "You didn’t put enough bacon in my burger!" << RESET << std::endl;
+    std::cout << WHITE_BOLD << "I cannot believe adding extra bacon costs more money." << std::endl << "You didn’t put enough bacon in my burger!" << RESET << std::endl;
 }
 
 void Harl::warning() {
@@ -16,7 +16,7 @@ void Harl::error() {
     std::cout << WHITE_BOLD << "This is unacceptable, I want to speak to the manager now." << RESET << std::endl;
 }
 
-// GetLevel function static
+// Getter static function
 static LogLevel getLevel(const std::string& level) {
 	std::pair<std::string, LogLevel> levels[] = {
 		std::make_pair("DEBUG", DEBUG),
@@ -24,10 +24,9 @@ static LogLevel getLevel(const std::string& level) {
 		std::make_pair("WARNING", WARNING),
 		std::make_pair("ERROR", ERROR)
 	};
-	for (int i = 0; i < 4; ++i) {
+	for (int i = 0; i < 4; ++i)
 		while (levels[i].first.compare(level) == 0)
 			return levels[i].second;
-	}
 	return INVALID;
 }
 // public method
@@ -36,18 +35,19 @@ void Harl::complain(std::string level) {
 		case DEBUG:
 			std::cout << BLUE_BOLD << "[ DEBUG ]" << RESET << std::endl;
 			this->debug();
-			break;
+			std::cout << std::endl;
 		case INFO:
 			std::cout << GREEN_BOLD << "[ INFO ]" << RESET << std::endl;
 			this->info();
-			break;
+			std::cout << std::endl;
 		case WARNING:
 			std::cout << YELLOW_BOLD << "[ WARNING ]" << RESET << std::endl;
 			this->warning();
-			break;
+			std::cout << std::endl;
 		case ERROR:
 			std::cout << RED_BOLD << "[ ERROR ]" << RESET << std::endl;
 			this->error();
+			std::cout << std::endl;
 			break;
 		default:
 			std::cout << MAGENTA_BOLD << "[ Probably complaining about insignificant problems ]" << RESET << std::endl;
