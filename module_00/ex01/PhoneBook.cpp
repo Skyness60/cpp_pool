@@ -110,6 +110,9 @@ void Module00::PhoneBook::removeContact(int index)
 	}
 	this->_contacts[7].clear();
 	this->numberContacts--;
+	if (this->id > 0) {
+		this->id--;
+	}
 	reIndexContacts();
 	std::cout << "\033[1;32m" << "Contact removed successfully!" << "\033[0m" << std::endl;
 	std::cout << "\033[H\033[J";
