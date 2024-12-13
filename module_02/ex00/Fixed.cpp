@@ -4,14 +4,14 @@
 Fixed::Fixed(void)
 {
 	std::cout << "Default constructor called" << std::endl;
-	integer = 0;
+	value = 0;
 }
 // Operator assignation
 Fixed &Fixed::operator=(const Fixed &copy)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &copy)
-		this->integer = copy.getRawBits();
+		this->value = copy.getRawBits();
 	return (*this);
 }
 // Constructor copy
@@ -29,12 +29,12 @@ Fixed::~Fixed(void)
 int Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return (this->integer);
+	return (this->value);
 }
 
 // Setter
 void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
-	integer = raw;
+	value = raw;
 }

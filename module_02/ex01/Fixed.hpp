@@ -6,13 +6,14 @@
 /*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:06:05 by sperron           #+#    #+#             */
-/*   Updated: 2024/12/13 14:29:17 by sperron          ###   ########.fr       */
+/*   Updated: 2024/12/13 14:36:02 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 # include <iostream>
+# include <cmath>
 
 // Class Fixed 
 class Fixed
@@ -27,6 +28,10 @@ class Fixed
 	public:
 		// Constructor default
 		Fixed(void);
+		// Constructor int
+		Fixed(const int integer);
+		// Constructor float
+		Fixed(const float floating);
 		// Constructor copy
 		Fixed(const Fixed &copy);
 		// Operator assignation
@@ -37,6 +42,10 @@ class Fixed
 		int getRawBits(void) const;
 		// Setter
 		void setRawBits(int const raw);
+		// Method public
+		float toFloat(void) const;
+		int toInt(void) const;
 };
-
+// Overload operator <<
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 #endif
