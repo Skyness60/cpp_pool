@@ -1,6 +1,28 @@
 #include "Fixed.hpp"
 
+int	main_original(){
+	std::cout << "===================" << std::endl;
+	std::cout << "Original main" << std::endl;
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
+	a = Fixed( 1234.4321f );
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	return 0;
+}
+
 int main() {
+	main_original();
+	std::cout << "===================" << std::endl;
+	std::cout << "My main" << std::endl;
     // Exemple 1: Utilisation d'un entier
     Fixed fixedInt(42);  // L'entier 42 devient 42 << 8
     std::cout << "Fixed point representation of 42 as int: " << fixedInt << std::endl;

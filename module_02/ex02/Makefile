@@ -9,6 +9,8 @@ SRC =	Fixed.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
+
+
 all: $(NAME)
 	@echo "\033[32m💥 Compilation terminée avec succès ! 💥\033[0m"
 	@echo "\033[33m🔨 Le projet est prêt à être utilisé ! 🎉\033[0m"
