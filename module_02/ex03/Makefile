@@ -1,10 +1,12 @@
 COMP = c++
 CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
-NAME = a.out
+NAME = bsp
 
 SRC =	Fixed.cpp \
-		main.cpp
+		main.cpp \
+		bsp.cpp \
+		Point.cpp
 
 
 OBJ = $(SRC:.cpp=.o)
