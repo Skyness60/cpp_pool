@@ -60,7 +60,11 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	}
 	if (this->hitPoints + amount > 100)
+	{
+		std::cout << "ClapTrap " << this->name << " is fully repaired !" << std::endl;
 		this->hitPoints = 100;
+		return ;
+	}
 	else
 		this->hitPoints += amount;
 	std::cout << "ClapTrap " << this->name << " is repaired by " << amount << " points !" << std::endl;
