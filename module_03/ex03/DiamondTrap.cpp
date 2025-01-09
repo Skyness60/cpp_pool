@@ -1,0 +1,38 @@
+#include "DiamondTrap.hpp"
+
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap("default"), FragTrap("default")
+{
+	this->name = name;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackPoints = 30;
+	std::cout << "The DiamondTrap " << this->name << " was bord !" << std::endl;
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
+{
+	if (this != &copy)
+	{
+		this->name = copy.name;
+		this->hitPoints = copy.hitPoints;
+		this->energyPoints = copy.energyPoints;
+		this->attackPoints = copy.attackPoints;
+	}
+	return (*this);
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap("default"), FragTrap("default")
+{
+	std::cout << "The DiamondTrap " << this->name << " was born and copy the DiamondTrap " << other.name << std::endl;
+	*this = other;
+}
+
+DiamondTrap::~DiamondTrap()
+{
+	std::cout << "The DiamondTrap " << this->name << " is dead !" << std::endl;
+}
+
+void	DiamondTrap::whoAmI()
+{
+	std::cout << "I am " << this->name << " and my ClapTrap name is " << ClapTrap::name << std::endl;
+}
