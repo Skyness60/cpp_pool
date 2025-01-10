@@ -6,12 +6,12 @@
 /*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:32 by sperron           #+#    #+#             */
-/*   Updated: 2025/01/10 12:30:17 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/10 19:04:04 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 #include <iostream>
 #include <iomanip>
 
@@ -49,3 +49,4 @@ namespace Module00 {
 			void clear();
 	};
 }
+#endif // !CONTACT_HPP

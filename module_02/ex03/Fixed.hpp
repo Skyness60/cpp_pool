@@ -6,11 +6,12 @@
 /*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:06:05 by sperron           #+#    #+#             */
-/*   Updated: 2025/01/10 12:37:03 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/10 19:08:10 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef FIXED_HPP
+# define FIXED_HPP
 # include <iostream>
 # include <cmath>
 
@@ -69,3 +70,5 @@ class Fixed
 };
 // Overload operator <<
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
+
+#endif // !FIXED_HPP

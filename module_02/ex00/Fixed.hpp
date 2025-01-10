@@ -6,11 +6,12 @@
 /*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:06:05 by sperron           #+#    #+#             */
-/*   Updated: 2025/01/10 12:36:18 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/10 19:07:24 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef FIXED_HPP
+# define FIXED_HPP
 # include <iostream>
 
 // Class Fixed 
@@ -37,3 +38,5 @@ class Fixed
 		// Setter
 		void setRawBits(int const raw);
 };
+
+#endif // !FIXED_HPP

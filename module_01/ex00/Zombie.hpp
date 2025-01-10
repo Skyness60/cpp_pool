@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 #include <iostream>
 #include <string>
 #define BLACK_BOLD "\033[1;30m"
@@ -30,3 +30,4 @@ class Zombie {
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
+#endif // !ZOMBIE_HPP

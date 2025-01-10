@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FILEREPLACER_HPP
+#define FILEREPLACER_HPP
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -31,3 +32,5 @@ namespace Module01
 			void writeFile(const std::string& newContent);
 	};
 }
+
+#endif // !FILEREPLACER_HPP

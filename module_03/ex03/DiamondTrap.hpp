@@ -1,4 +1,4 @@
-#pragma once
+#ifndef DIAMONDTRAP_HPP
 #include <iostream>
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
@@ -14,3 +14,5 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		void	whoAmI();
 
 };
+
+#endif // !DIAMONDTRAP_HPP

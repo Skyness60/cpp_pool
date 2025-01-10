@@ -1,7 +1,11 @@
 #include "Animal.hpp"
 
-// Constructor
-Animal::Animal(std::string type = "Animal") : type(type) {}
+
+// Constructor default
+Animal::Animal() : type("Animal") {}
+
+// Constructor with type
+Animal::Animal(std::string type) : type(type) {}
 
 // Copy Constructor
 Animal::Animal(const Animal &other)

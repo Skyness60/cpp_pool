@@ -1,9 +1,7 @@
-#pragma once
-
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 #include <iostream>
 #include <string>
-
-
 /**
  * @class Animal
  * @brief Classe de base abstraite représentant un animal.
@@ -17,11 +15,11 @@
  * garantir que le destructeur de la classe dérivée est appelé correctement.
  * en gros c'est une classe abstraite. (pas d'objet de cette classe)
  */
-
 class Animal {
 	protected:
 		std::string type;
 	public:
+		Animal();
 		Animal(std::string type);
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &copy);
@@ -29,3 +27,4 @@ class Animal {
 		virtual void makeSound() const = 0;
 		std::string getType() const;
 };
+#endif // !ANIMAL_HPP
