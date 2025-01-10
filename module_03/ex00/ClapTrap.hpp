@@ -1,5 +1,4 @@
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#pragma once
 #include <iostream>
 
 class ClapTrap
@@ -18,5 +17,3 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 };
-
-#endif

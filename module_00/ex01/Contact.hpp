@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:50:32 by sperron           #+#    #+#             */
-/*   Updated: 2024/12/02 13:55:52 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/10 12:30:17 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -50,4 +49,3 @@ namespace Module00 {
 			void clear();
 	};
 }
-#endif

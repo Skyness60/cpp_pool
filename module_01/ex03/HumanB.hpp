@@ -1,5 +1,4 @@
-#ifndef HUMANB_HPP
-#define HUMANB_HPP
+#pragma once
 #include <iostream>
 #include <string>
 #include "Weapon.hpp"
@@ -32,6 +31,3 @@ class HumanB {
 		// Method attack
 		void attack();
 };
-
-
-#endif // !HUMANB_HPP

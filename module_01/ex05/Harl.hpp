@@ -1,5 +1,4 @@
-#ifndef HARL_HPP
-#define HARL_HPP
+#pragma once
 #include <iostream>
 #include <string>
 #define BLACK_BOLD "\033[1;30m"
@@ -24,4 +23,3 @@ class Harl {
 	public:	
 		void complain(std::string level);
 };
-#endif // !HARL_HPP

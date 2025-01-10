@@ -1,5 +1,4 @@
-#ifndef WEAPON_HPP
-#define WEAPON_HPP
+#pragma once
 #include <iostream>
 #include <string>
 #define BLACK_BOLD "\033[1;30m"
@@ -27,5 +26,3 @@ class Weapon {
 		// Setters
 		void setType(std::string type);
 };
-
-#endif // !WEAPON_HPP

@@ -1,5 +1,5 @@
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
+#pragma once
+
 #include <iostream>
 #include <string>
 #include "Weapon.hpp"
@@ -28,5 +28,3 @@ class HumanA {
 		// attack method
 		void attack();
 };
-
-#endif // !HUMANA_HPP

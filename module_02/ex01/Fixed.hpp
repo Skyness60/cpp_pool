@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:06:05 by sperron           #+#    #+#             */
-/*   Updated: 2024/12/13 14:36:02 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/10 12:36:29 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#pragma once
 # include <iostream>
 # include <cmath>
 
@@ -48,4 +47,3 @@ class Fixed
 };
 // Overload operator <<
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
-#endif
