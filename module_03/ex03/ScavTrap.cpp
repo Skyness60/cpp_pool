@@ -11,7 +11,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy)
 {
-	if (this != &copy)
+	if (this not_eq &copy)
 	{
 		this->name = copy.name;
 		this->hitPoints = copy.hitPoints;

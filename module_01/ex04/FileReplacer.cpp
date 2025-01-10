@@ -50,7 +50,7 @@ std::string Module01::FileReplacer::replaceOccurrences(const std::string& conten
 	std::string::size_type pos = 0, prevPos = 0;
 
 	std::cout << BLUE << BOLD << "Replacing occurrences of \"" << this->s1 << "\" with \"" << this->s2 << "\"." << RESET << std::endl;
-	while ((pos = contentFile.find(this->s1, pos)) != std::string::npos)
+	while ((pos = contentFile.find(this->s1, pos)) not_eq std::string::npos)
 	{
 		newContent.append(contentFile, prevPos, pos - prevPos);
 		newContent.append(this->s2);

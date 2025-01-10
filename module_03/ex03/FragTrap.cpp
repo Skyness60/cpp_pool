@@ -11,7 +11,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 
 FragTrap &FragTrap::operator=(const FragTrap &copy)
 {
-	if (this != &copy)
+	if (this not_eq &copy)
 	{
 		this->name = copy.name;
 		this->hitPoints = copy.hitPoints;

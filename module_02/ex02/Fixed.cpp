@@ -27,7 +27,7 @@ Fixed::Fixed(const float floating)
 Fixed &Fixed::operator=(const Fixed &copy)
 {
 	// std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &copy)
+	if (this not_eq &copy)
 		this->value = copy.getRawBits();
 	return (*this);
 }
@@ -59,7 +59,7 @@ bool Fixed::operator==(const Fixed &compare) const
 
 bool Fixed::operator!=(const Fixed &compare) const
 {
-	return (this->value != compare.getRawBits());
+	return (this->value not_eq compare.getRawBits());
 }
 
 // Operator arithmetic

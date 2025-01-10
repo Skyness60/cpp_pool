@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-// function
+// function 
 Zombie* zombieHorde( int N, std::string name ) {
 	if (N <= 0)
 		return (NULL);

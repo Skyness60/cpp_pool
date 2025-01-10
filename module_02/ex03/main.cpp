@@ -17,14 +17,14 @@
 #define CHAR_EDGE 'O'
 #define CHAR_INSIDE 'X'
 #define COLOR_PRINT(char, color) (std::cout << color << char << RESET << " ")
-#define IS_BETWEEN(val, min, max) ((val) >= (min) && (val) <= (max))
+#define IS_BETWEEN(val, min, max) ((val) >= (min) and (val) <= (max))
 
 bool isOnEdge(Point p1, Point p2, Point p) {
     Fixed crossProduct = (p2.getX() - p1.getX()) * (p.getY() - p1.getY()) -
                          (p2.getY() - p1.getY()) * (p.getX() - p1.getX());
-    if (crossProduct != 0)
+    if (crossProduct not_eq 0)
         return false;
-    return IS_BETWEEN(p.getX(), Fixed::min(p1.getX(), p2.getX()), Fixed::max(p1.getX(), p2.getX())) &&
+    return IS_BETWEEN(p.getX(), Fixed::min(p1.getX(), p2.getX()), Fixed::max(p1.getX(), p2.getX())) and
            IS_BETWEEN(p.getY(), Fixed::min(p1.getY(), p2.getY()), Fixed::max(p1.getY(), p2.getY()));
 }
 
@@ -44,10 +44,10 @@ int main() {
         for (int j = 0; j < gridSize; j++) {
             Point currentPoint(j, i);
 
-            if (i == a.getY().toInt() && j == a.getX().toInt()) grid[i][j] = CHAR_A;
-            else if (i == b.getY().toInt() && j == b.getX().toInt()) grid[i][j] = CHAR_B;
-            else if (i == c.getY().toInt() && j == c.getX().toInt()) grid[i][j] = CHAR_C;
-            else if (isOnEdge(a, b, currentPoint) || isOnEdge(b, c, currentPoint) || isOnEdge(a, c, currentPoint))
+            if (i == a.getY().toInt() and j == a.getX().toInt()) grid[i][j] = CHAR_A;
+            else if (i == b.getY().toInt() and j == b.getX().toInt()) grid[i][j] = CHAR_B;
+            else if (i == c.getY().toInt() and j == c.getX().toInt()) grid[i][j] = CHAR_C;
+            else if (isOnEdge(a, b, currentPoint) or isOnEdge(b, c, currentPoint) or isOnEdge(a, c, currentPoint))
                 grid[i][j] = CHAR_EDGE;
             else if (bsp(a, b, c, currentPoint))
                 grid[i][j] = CHAR_INSIDE;
@@ -55,7 +55,7 @@ int main() {
     }
 
     int pX = point.getX().toInt(), pY = point.getY().toInt();
-    if (pX < gridSize && pY < gridSize) grid[pY][pX] = CHAR_P;
+    if (pX < gridSize and pY < gridSize) grid[pY][pX] = CHAR_P;
 
     for (int i = 0; i < gridSize; i++) {
         for (int j = 0; j < gridSize; j++) {

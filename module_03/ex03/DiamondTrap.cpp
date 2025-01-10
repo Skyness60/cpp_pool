@@ -11,7 +11,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 {
-	if (this != &copy)
+	if (this not_eq &copy)
 	{
 		this->name = copy.name;
 		this->hitPoints = copy.hitPoints;

@@ -16,7 +16,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 
     // If all determinants have the same sign (all non-negative or all non-positive),
     // the point is inside the triangle or on its boundary
-    if ((x > 0 && y > 0 && z > 0) || (x < 0 && y < 0 && z < 0))
+    if ((x > 0 and y > 0 and z > 0) or (x < 0 and y < 0 and z < 0))
         return true;
 
     // If the determinants have different signs, the point is outside the triangle
