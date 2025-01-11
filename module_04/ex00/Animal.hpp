@@ -19,12 +19,12 @@ class Animal {
 	protected:
 		std::string type;
 	public:
-		Animal();
+		Animal(void);
 		Animal(std::string type);
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &copy);
 		virtual ~Animal(); // virtual destructor 
-		virtual void makeSound() const = 0;
+		virtual void makeSound() const;
 		std::string getType() const;
 };
 #endif // !ANIMAL_HPP

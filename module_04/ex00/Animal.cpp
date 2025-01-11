@@ -2,7 +2,10 @@
 
 
 // Constructor default
-Animal::Animal() : type("Animal") {}
+Animal::Animal() : type("default")
+{
+	std::cout << "Animal " << "default" << " constructor called" << std::endl;
+}
 
 // Constructor with type
 Animal::Animal(std::string type) : type(type) {}
@@ -33,7 +36,7 @@ std::string Animal::getType() const
 }
 
 // Make sound method
-void Animal::makeSound() const
+void Animal::makeSound(void) const
 {
 	std::cout << "Animal" << this->type << " make a sound" << std::endl;
 }
