@@ -1,15 +1,21 @@
 #include "WrongAnimal.hpp"
 
 // Constructor default
-WrongAnimal::WrongAnimal(void) : type("WrongAnimal") {}
+WrongAnimal::WrongAnimal(void) : type("WrongAnimal")
+{
+	std::cout << "WrongAnimal constructor called" << std::endl;
+}
 
 // Constructor with type
-WrongAnimal::WrongAnimal(std::string type) : type(type) {}
+WrongAnimal::WrongAnimal(std::string type) : type(type)
+{
+	std::cout << "WrongAnimal " << type << " constructor called" << std::endl;
+}
 
 // Copy Constructor
-WrongAnimal::WrongAnimal(const WrongAnimal &copy)
+WrongAnimal::WrongAnimal(const WrongAnimal &copy) : type(copy.type)
 {
-	*this = copy;
+	std::cout << "WrongAnimal " << type << " copy constructor called" << std::endl;
 }
 
 // Assignation operator
@@ -23,7 +29,10 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &copy)
 }
 
 // Destructor
-WrongAnimal::~WrongAnimal() {}
+WrongAnimal::~WrongAnimal()
+{
+	std::cout << "WrongAnimal " << type << " destructor called" << std::endl;
+}
 
 // Make sound method
 void WrongAnimal::makeSound() const

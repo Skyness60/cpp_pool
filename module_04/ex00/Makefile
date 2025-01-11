@@ -1,12 +1,13 @@
-xCOMP = c++
+COMP = c++
 CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
 NAME = a.out
 
-SRC =	ClapTrap.cpp \
-		ScavTrap.cpp \
-		FragTrap.cpp \
-		DiamondTrap.cpp \
+SRC =	Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp \
 		main.cpp
 
 

@@ -8,12 +8,15 @@ Animal::Animal() : type("default")
 }
 
 // Constructor with type
-Animal::Animal(std::string type) : type(type) {}
+Animal::Animal(std::string type) : type(type)
+{
+	std::cout << "Animal " << type << " constructor called" << std::endl;
+}
 
 // Copy Constructor
-Animal::Animal(const Animal &other)
+Animal::Animal(const Animal &other) : type(other.type)
 {
-	*this = other;
+	std::cout << "Animal " << type << " copy constructor called" << std::endl;
 }
 
 // Assignation operator
@@ -27,7 +30,10 @@ Animal &Animal::operator=(const Animal &copy)
 }
 
 // Destructor
-Animal::~Animal() {}
+Animal::~Animal()
+{
+	std::cout << "Animal " << type << " destructor called" << std::endl;
+}
 
 // Getters
 std::string Animal::getType() const
