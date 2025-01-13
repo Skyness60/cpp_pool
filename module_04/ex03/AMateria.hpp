@@ -2,6 +2,8 @@
 #define AMAETERIA_HPP
 
 #include <iostream>
+#include <string>
+#include "ICharacter.hpp"
 
 class AMateria {
 	protected:
