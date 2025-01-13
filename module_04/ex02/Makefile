@@ -3,7 +3,7 @@ CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
 NAME = a.out
 
-SRC =	Animal.cpp \
+SRC =	AAnimal.cpp \
 		Cat.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \
