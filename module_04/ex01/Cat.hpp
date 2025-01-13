@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "Brain.hpp"
 #include "Animal.hpp"
 
 /**
@@ -14,6 +15,8 @@
  */
 
 class Cat : public Animal {
+	private:
+		Brain *catbrain;
 	public:
 		Cat();
 		Cat(std::string type);
@@ -21,5 +24,6 @@ class Cat : public Animal {
 		Cat &operator=(const Cat &copy);
 		virtual ~Cat();
 		virtual void makeSound() const;
+		Brain *getBrain() const;
 };
 #endif // !CAT_HPP
