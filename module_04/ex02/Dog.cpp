@@ -1,17 +1,17 @@
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog"), dogbrain(new Brain())
+Dog::Dog() : AAnimal("Dog"), dogbrain(new Brain())
 {
 	std::cout << "Dog constructor called" << std::endl;
 }
 
 // Constructor with type
-Dog::Dog(std::string type) : Animal(type), dogbrain(new Brain())
+Dog::Dog(std::string type) : AAnimal(type), dogbrain(new Brain())
 {
 	std::cout << "Dog" << type << " constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(other), dogbrain(new Brain())
+Dog::Dog(const Dog &other) : AAnimal(other), dogbrain(new Brain())
 {
 	std::cout << "Dog copy constructor called" << std::endl;
 }

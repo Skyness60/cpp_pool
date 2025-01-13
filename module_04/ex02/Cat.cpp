@@ -1,19 +1,19 @@
 #include "Cat.hpp"
 
 // Constructor 
-Cat::Cat() : Animal("Cat"), catbrain(new Brain())
+Cat::Cat() : AAnimal("Cat"), catbrain(new Brain())
 {
 	std::cout << "Cat constructor called" << std::endl;
 }
 
 // Constructor with type
-Cat::Cat(std::string type) : Animal(type), catbrain(new Brain())
+Cat::Cat(std::string type) : AAnimal(type), catbrain(new Brain())
 {
 	std::cout << "Cat" << type << " constructor called" << std::endl;
 }
 
 // Copy Constructor
-Cat::Cat(const Cat &other) : Animal(other), catbrain(new Brain())
+Cat::Cat(const Cat &other) : AAnimal(other), catbrain(new Brain())
 {
 	std::cout << "Cat" << type << " copy constructor called" << std::endl;
 }
