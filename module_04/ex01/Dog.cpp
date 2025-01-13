@@ -11,7 +11,7 @@ Dog::Dog(std::string type) : Animal(type), dogbrain(new Brain())
 	std::cout << "Dog" << type << " constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Dog::Dog(const Dog &other) : Animal(other), dogbrain(new Brain())
 {
 	std::cout << "Dog copy constructor called" << std::endl;
 }
@@ -20,6 +20,7 @@ Dog &Dog::operator=(const Dog &copy)
 {
 	if (this != &copy) {
 		this->type = copy.type;
+		this->dogbrain->setIdeas(copy.dogbrain->getIdeas());
 	}
 	return *this;
 }

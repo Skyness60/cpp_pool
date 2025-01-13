@@ -13,7 +13,7 @@ Cat::Cat(std::string type) : Animal(type), catbrain(new Brain())
 }
 
 // Copy Constructor
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : Animal(other), catbrain(new Brain())
 {
 	std::cout << "Cat" << type << " copy constructor called" << std::endl;
 }
@@ -24,6 +24,7 @@ Cat &Cat::operator=(const Cat &copy)
 	if (this not_eq &copy)
 	{
 		this->type = copy.type;
+		this->catbrain->setIdeas(copy.catbrain->getIdeas());
 	}
 	return (*this);
 }
@@ -42,7 +43,7 @@ void Cat::makeSound() const
 }
 
 // Get brain method
-Brain *Cat::getBrain() const
+Brain	*Cat::getBrain(void) const
 {
-	return (this->catbrain);
+	return this->catbrain;
 }

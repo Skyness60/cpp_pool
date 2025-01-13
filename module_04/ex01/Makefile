@@ -8,6 +8,7 @@ SRC =	Animal.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \
 		WrongCat.cpp \
+		Brain.cpp \
 		main.cpp
 
 
