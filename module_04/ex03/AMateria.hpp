@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#define nullptr NULL
 #include "ICharacter.hpp"
 
 class AMateria {

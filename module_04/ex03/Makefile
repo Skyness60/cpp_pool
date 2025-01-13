@@ -3,12 +3,11 @@ CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
 NAME = a.out
 
-SRC =	AAnimal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		Brain.cpp \
+SRC =	AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		MateriaSource.cpp \
 		main.cpp
 
 

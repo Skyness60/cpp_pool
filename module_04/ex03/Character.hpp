@@ -1,9 +1,6 @@
-#ifndef CHARACTER.HPP
-#define CHARACTER.HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
-#include <iostream>
-#include <string>
-#include "ICharacter.hpp"
 #include "AMateria.hpp"
 
 class Character : public ICharacter
