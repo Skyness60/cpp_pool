@@ -9,6 +9,5 @@ int main() {
     delete heapZombie;
 	// Create a Zombie in the stack
     randomChump("StackZombie");
-
     return 0;
 }
