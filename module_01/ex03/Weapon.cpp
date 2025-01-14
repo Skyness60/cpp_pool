@@ -1,15 +1,10 @@
 #include "Weapon.hpp"
 // Constructeur
-Weapon::Weapon(std::string type) : type(type)
-{
-	this->type = type;
-	return ;
-}
+Weapon::Weapon(std::string type) : type(type) {}
+
 // Deconstructor
-Weapon::~Weapon()
-{
-	return ;
-}
+Weapon::~Weapon() {}
+
 // Getter
 std::string Weapon::getType(void)
 {
