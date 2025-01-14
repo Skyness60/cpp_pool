@@ -1,13 +1,7 @@
 #ifndef FILEREPLACER_HPP
 #define FILEREPLACER_HPP
 #include <fstream>
-#include <sstream>
 #include <iostream>
-#include <ctime>
-#include <sys/stat.h>
-#include <cstdlib>
-#include <iomanip>
-#include <stdexcept>
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"

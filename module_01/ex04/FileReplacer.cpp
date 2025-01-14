@@ -1,4 +1,6 @@
 #include "FileReplacer.hpp"
+#include <iostream>
+#include <fstream>
 
 // Constructor
 Module01::FileReplacer::FileReplacer(std::string filename, std::string s1, std::string s2)
@@ -6,51 +8,45 @@ Module01::FileReplacer::FileReplacer(std::string filename, std::string s1, std::
 	this->filename = filename;
 	this->s1 = s1;
 	this->s2 = s2;
-	std::cout << GREEN << BOLD << "FileReplacer object created." << RESET << std::endl;
+	std::cout << "FileReplacer object created." << std::endl;
 }
 
 // Destructor
 Module01::FileReplacer::~FileReplacer()
 {
-	std::cout << RED << BOLD << "FileReplacer object destroyed." << RESET << std::endl;
+	std::cout << "FileReplacer object destroyed." << std::endl;
 }
 
 // Read file
 std::string Module01::FileReplacer::readFile()
 {
-	std::clock_t start = std::clock();
 	std::ifstream file(this->filename.c_str());
 	std::string contentFile;
 	std::string line;
 
 	if (file.is_open())
 	{
-		std::cout << BLUE << BOLD << "Reading file: " << this->filename << RESET << std::endl;
+		std::cout << "Reading file: " << this->filename << std::endl;
 		while (std::getline(file, line))
 			contentFile += line + "\n";
 		file.close();
-		std::cout << GREEN << BOLD << "File read successfully." << RESET << std::endl;
+		std::cout << "File read successfully." << std::endl;
 	}
 	else
 	{
-		std::cout << RED << BOLD << "Failed to open file: " << this->filename << RESET << std::endl;
-		std::exit(1);
+		std::cout << "Failed to open file: " << this->filename << std::endl;
 	}
-	std::clock_t end = std::clock();
-	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-	std::cout << YELLOW << BOLD << "Time taken to read file: " << std::setprecision(2) << duration << " ms." << RESET << std::endl;
 	return contentFile;
 }
 
 // Replace occurrences
 std::string Module01::FileReplacer::replaceOccurrences(const std::string& contentFile)
 {
-	std::clock_t start = std::clock();
 	std::string newContent;
 	std::string::size_type pos = 0, prevPos = 0;
 
-	std::cout << BLUE << BOLD << "Replacing occurrences of \"" << this->s1 << "\" with \"" << this->s2 << "\"." << RESET << std::endl;
-	while ((pos = contentFile.find(this->s1, pos)) not_eq std::string::npos)
+	std::cout << "Replacing occurrences of \"" << this->s1 << "\" with \"" << this->s2 << "\"." << std::endl;
+	while ((pos = contentFile.find(this->s1, pos)) != std::string::npos)
 	{
 		newContent.append(contentFile, prevPos, pos - prevPos);
 		newContent.append(this->s2);
@@ -58,32 +54,24 @@ std::string Module01::FileReplacer::replaceOccurrences(const std::string& conten
 		prevPos = pos;
 	}
 	newContent.append(contentFile, prevPos, std::string::npos);
-	std::cout << GREEN << BOLD << "Occurrences replaced successfully." << RESET << std::endl;
-	std::clock_t end = std::clock();
-	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-	std::cout << YELLOW << BOLD << "Time taken to replace occurrences: " << std::setprecision(2) << duration << " ms." << RESET << std::endl;
+	std::cout << "Occurrences replaced successfully." << std::endl;
 	return newContent;
 }
 
 // Write file
 void Module01::FileReplacer::writeFile(const std::string& newContent)
 {
-	std::clock_t start = std::clock();
 	std::ofstream file((this->filename + ".replace").c_str());
 
 	if (file.is_open())
 	{
-		std::cout << BLUE << BOLD << "Writing to file: " << this->filename + ".replace" << RESET << std::endl;
+		std::cout << "Writing to file: " << this->filename + ".replace" << std::endl;
 		file << newContent;
 		file.close();
-		std::cout << GREEN << BOLD << "File written successfully." << RESET << std::endl;
+		std::cout << "File written successfully." << std::endl;
 	}
 	else
 	{
-		std::cout << RED << BOLD << "Failed to open file for writing: " << this->filename + ".replace" << RESET << std::endl;
-		std::exit(1);
+		std::cout << "Failed to open file for writing: " << this->filename + ".replace" << std::endl;
 	}
-	std::clock_t end = std::clock();
-	double duration = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
-	std::cout << YELLOW << BOLD << "Time taken to write file: " << std::setprecision(2) << duration << " ms." << RESET << std::endl;
 }
