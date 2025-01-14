@@ -59,7 +59,7 @@ void Fixed::setRawBits(int const raw)
 // Method public
 float Fixed::toFloat(void) const
 {
-	return (this->value / (float)(1 << bits));
+	return (float(this->value) / (1 << bits));
 }
 
 int Fixed::toInt(void) const
