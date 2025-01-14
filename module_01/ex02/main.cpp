@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #define BLACK_BOLD "\033[1;30m"
 #define RED_BOLD "\033[1;31m"
 #define GREEN_BOLD "\033[1;32m"
@@ -13,7 +12,7 @@
 
 int	main()
 {
-	std::system("clear");
+	std::cout << "\033[H\033[J";
 	// Create a string
 	std::string string = "HI THIS IS BRAIN";
 	// Create a pointer to the string
