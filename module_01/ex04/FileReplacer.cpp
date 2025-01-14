@@ -1,6 +1,4 @@
 #include "FileReplacer.hpp"
-#include <iostream>
-#include <fstream>
 
 // Constructor
 Module01::FileReplacer::FileReplacer(std::string filename, std::string s1, std::string s2)
