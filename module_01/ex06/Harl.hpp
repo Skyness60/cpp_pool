@@ -2,7 +2,6 @@
 #define HARL_HPP
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #define BLACK_BOLD "\033[1;30m"
 #define RED_BOLD "\033[1;31m"
 #define GREEN_BOLD "\033[1;32m"

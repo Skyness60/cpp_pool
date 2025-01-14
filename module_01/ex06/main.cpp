@@ -2,7 +2,7 @@
 
 int main(int ac, char **av) {
 	Harl harl;
-	std::system("clear");
+	std::cout << "\033[H\033[J";
 	if (ac != 2)
 	{
 		harl.complain("INVALID");
