@@ -1,7 +1,7 @@
 COMP = c++
 CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
-NAME = kitty
+NAME = violence
 
 SRC =	Weapon.cpp \
 		HumanB.cpp \
@@ -10,8 +10,6 @@ SRC =	Weapon.cpp \
 
 
 OBJ = $(SRC:.cpp=.o)
-
-
 
 all: $(NAME)
 	@echo "\033[32m💥 Compilation terminée avec succès ! 💥\033[0m"
