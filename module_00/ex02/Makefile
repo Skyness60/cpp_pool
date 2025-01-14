@@ -121,7 +121,7 @@ $(TRUE_LOG):
 	@echo "[19920104_091532] index:7;amount:8942;closed" >> $(TRUE_LOG)
 
 $(CHECK_LEAK_SH):
-	@curl -o $(CHECK_LEAK_SH) "https://cdn.discordapp.com/attachments/1238453543166410845/1313895655143379026/check_leak.sh?ex=6751cc2f&is=67507aaf&hm=410ff4fbce117c6636017b70847a2773480563a4a10c4a5aebf1a0e555f793e2&"
+	@curl -o $(CHECK_LEAK_SH) "https://cdn.discordapp.com/attachments/1238453543166410845/1313895655143379026/check_leak.sh?ex=678730ef&is=6785df6f&hm=664fdb34ede834050236722a941e3620d6db29230065a2257989fb3cc1f20082&"
 	@chmod +x $(CHECK_LEAK_SH)
 
 
