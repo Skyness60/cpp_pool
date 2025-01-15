@@ -123,7 +123,7 @@ int main() {
 			Fixed result = evaluateExpression(input);
 			std::cout << "Result: " << std::fixed << std::setprecision(2) << result.toFloat() << std::endl;
 
-			if (input.find("==") not_eq std::string::npos or input.find("not_eq") not_eq std::string::npos or
+			if (input.find("==") not_eq std::string::npos or input.find("!=") not_eq std::string::npos or
 				input.find(">") not_eq std::string::npos or input.find("<") not_eq std::string::npos) {
 				std::cout << "Comparison result: ";
 				if (result.toFloat() == 1) {
