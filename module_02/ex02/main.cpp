@@ -31,7 +31,7 @@ Fixed applyOp(Fixed a, Fixed b, const std::string& op) {
 	if (op == ">") return a > b ? Fixed(1) : Fixed(0);
 	if (op == "<") return a < b ? Fixed(1) : Fixed(0);
 	if (op == "==") return a == b ? Fixed(1) : Fixed(0);
-	if (op == "not_eq") return a not_eq b ? Fixed(1) : Fixed(0);
+	if (op == "!=") return a != b ? Fixed(1) : Fixed(0);
 	if (op == "<=") return a <= b ? Fixed(1) : Fixed(0);
 	if (op == ">=") return a >= b ? Fixed(1) : Fixed(0);
 	
