@@ -6,8 +6,6 @@ NAME = a.out
 SRC =	AAnimal.cpp \
 		Cat.cpp \
 		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
 		Brain.cpp \
 		main.cpp
 
