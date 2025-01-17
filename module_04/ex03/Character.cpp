@@ -1,19 +1,25 @@
 #include "Character.hpp"
 
+#include <iostream>
+#include "Character.hpp"
+
 Character::Character() : name("default")
 {
+	std::cout << "Default constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = nullptr;
 }
 
 Character::Character(std::string name) : name(name)
 {
+	std::cout << "Parameterized constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = nullptr;
 }
 
 Character::Character(const Character &other) : name(other.name)
 {
+	std::cout << "Copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (other.inventory[i])
@@ -25,7 +31,8 @@ Character::Character(const Character &other) : name(other.name)
 
 Character &Character::operator=(const Character &copy)
 {
-	if (this not_eq &copy)
+	std::cout << "Assignment operator called" << std::endl;
+	if (this != &copy)
 	{
 		this->name = copy.name;
 		for (int i = 0; i < 4; i++)
@@ -43,6 +50,7 @@ Character &Character::operator=(const Character &copy)
 
 Character::~Character()
 {
+	std::cout << "Destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->inventory[i])
@@ -57,9 +65,10 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
+	std::cout << "Equip called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
-		if (not this->inventory[i])
+		if (!this->inventory[i])
 		{
 			this->inventory[i] = m;
 			break;
@@ -69,12 +78,14 @@ void Character::equip(AMateria *m)
 
 void Character::unequip(int idx)
 {
-	if (idx >= 0 and idx < 4)
+	std::cout << "Unequip called" << std::endl;
+	if (idx >= 0 && idx < 4)
 		this->inventory[idx] = nullptr;
 }
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (idx >= 0 and idx < 4 and this->inventory[idx])
+	std::cout << "Use called" << std::endl;
+	if (idx >= 0 && idx < 4 && this->inventory[idx])
 		this->inventory[idx]->use(target);
 }
