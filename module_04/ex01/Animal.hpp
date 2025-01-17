@@ -27,6 +27,5 @@ class Animal {
 		virtual ~Animal(); // virtual destructor 
 		virtual void makeSound() const;
 		std::string getType() const;
-		virtual Brain *getBrain() const = 0;
 };
 #endif // !ANIMAL_HPP
