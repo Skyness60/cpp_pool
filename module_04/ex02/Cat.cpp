@@ -13,7 +13,7 @@ Cat::Cat(std::string type) : AAnimal(type), catbrain(new Brain())
 }
 
 // Copy Constructor
-Cat::Cat(const Cat &other) : AAnimal(other), catbrain(new Brain())
+Cat::Cat(const Cat &other) : AAnimal(other), catbrain(new Brain(*other.catbrain))
 {
 	std::cout << "Cat" << type << " copy constructor called" << std::endl;
 }

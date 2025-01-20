@@ -11,7 +11,7 @@ Dog::Dog(std::string type) : AAnimal(type), dogbrain(new Brain())
 	std::cout << "Dog" << type << " constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &other) : AAnimal(other), dogbrain(new Brain())
+Dog::Dog(const Dog &other) : AAnimal(other), dogbrain(new Brain(*other.dogbrain))
 {
 	std::cout << "Dog copy constructor called" << std::endl;
 }
