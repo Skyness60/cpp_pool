@@ -4,7 +4,7 @@ int	main(int ac, char **av)
 {
 	if (ac != 4)
 	{
-		std::cerr << RED << BOLD << "Usage: ./FileReplacer <filename> <s1> <s2>" << RESET << std::endl;
+		std::cout << RED << BOLD << "Usage: ./FileReplacer <filename> <s1> <s2>" << RESET << std::endl;
 		return (1);
 	}
 	Module01::FileReplacer fileReplacer(av[1], av[2], av[3]);

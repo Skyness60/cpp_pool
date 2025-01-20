@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
+/*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:28:59 by sperron           #+#    #+#             */
-/*   Updated: 2025/01/10 18:50:04 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/20 14:27:49 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int ac, char **av)
                 std::cout << MAGENTA_BOLD << (char)std::toupper(av[i][j]);
         std::cout << std::endl << RESET;
     } catch (const std::exception &e) {
-        return (std::cerr << RED_BOLD << "* " << e.what() << " *" << RESET << std::endl, 1);
+        return (std::cout << RED_BOLD << "* " << e.what() << " *" << RESET << std::endl, 1);
 	}
     return (0);
 }

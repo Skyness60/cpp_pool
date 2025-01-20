@@ -23,7 +23,7 @@ Module00::PhoneBook::PhoneBook(void)
 		if (not std::getline(std::cin, input))
 		{
 			if (std::cin.eof()) {
-				std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+				std::cout << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
 				return;
 			}
 			std::cin.clear();
@@ -63,7 +63,7 @@ std::string Module00::PhoneBook::getInput(const std::string& prompt) {
 	std::cout << "\033[1;36m" << prompt << "\033[0m" << std::endl;
 	while (not std::getline(std::cin, str) or str.empty()) {
 		if (std::cin.eof()) {
-			std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+			std::cout << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
 			return "";
 		}
 		std::cout << "\033[1;31m" << prompt << " cannot be empty. Please enter again:" << "\033[0m" << std::endl;
@@ -151,7 +151,7 @@ void Module00::PhoneBook::searchContact(void)
 		if (not std::getline(std::cin, str))
 		{
 			if (std::cin.eof()) {
-				std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+				std::cout << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
 				return;
 			}
 			std::cin.clear();
@@ -185,7 +185,7 @@ void Module00::PhoneBook::searchContact(void)
 			if (not std::getline(std::cin, str))
 			{
 				if (std::cin.eof()) {
-					std::cerr << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
+					std::cout << "\033[1;31m" << "Input interrupted by EOF. Exiting program." << "\033[0m" << std::endl;
 					return;
 				}
 				std::cin.clear();
