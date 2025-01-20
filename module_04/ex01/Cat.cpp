@@ -13,9 +13,9 @@ Cat::Cat(std::string type) : Animal(type), catbrain(new Brain())
 }
 
 // Copy Constructor
-Cat::Cat(const Cat &other) : Animal(other), catbrain(new Brain())
+Cat::Cat(const Cat &other) : Animal(other), catbrain(new Brain(*other.catbrain))
 {
-	std::cout << "Cat" << type << " copy constructor called" << std::endl;
+	std::cout << "Cat " << other.type << " copy constructor called" << std::endl;
 }
 
 // Assignation operator
