@@ -20,18 +20,13 @@ class Zombie {
 	// Zombie class methods
 	public:
 		// Zombie class constructor
-		Zombie() {};
+		Zombie();
 		// Zombie class destructor
-		~Zombie() {};
+		~Zombie();
 		// Zombie class announce method
 		void announce( void );
 		// Setter for the name attribute && default name is "default_name"
-		void setName(const std::string& name) {
-			if (name.empty())
-				this->name = "default_name";
-			else
-				this->name = name;
-		}
+		void setName(const std::string& name);
 };
 
 // Function prototypes

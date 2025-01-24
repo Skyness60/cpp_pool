@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:26:58 by sperron           #+#    #+#             */
-/*   Updated: 2024/12/05 12:44:24 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/24 15:51:52 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie::Zombie(std::string name) : name(name) {
 
 // Zombie class destructor
 Zombie::~Zombie() {
-	return ;
+	std::cout << RED_BOLD << "Zombie " << this->name << " has been destroyed." << RESET << std::endl;
 }
 
 // Zombie class announce method
