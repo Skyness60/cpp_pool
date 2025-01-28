@@ -2,9 +2,9 @@
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap("default"), FragTrap("default"), name(name)
 {
-	this->hitPoints = 100;
-	this->energyPoints = 50;
-	this->attackPoints = 30;
+	this->hitPoints = FragTrap::hitPoints;
+	this->energyPoints = ScavTrap::energyPoints;
+	this->attackPoints = FragTrap::attackPoints;
 	std::cout << "The DiamondTrap " << this->name << " was bord !" << std::endl;
 }
 
