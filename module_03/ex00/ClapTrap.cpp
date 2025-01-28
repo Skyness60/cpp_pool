@@ -2,11 +2,12 @@
 
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackPoints(0)
 {
-	std::cout << "The ClapTrap " << this->name << " was bord !" << std::endl;
+	std::cout << BOLD_GREEN << "The ClapTrap " << this->name << " was bord !" << RESET << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 {
+	std::cout << BOLD_YELLOW <<"Copy assignment operator called" << RESET << std::endl;
 	if (this not_eq &copy)
 	{
 		this->name = copy.name;
@@ -19,12 +20,12 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "The ClapTrap " << this->name << " is dead !" << std::endl;
+	std::cout << BOLD_RED << "The ClapTrap " << this->name << " is dead !" << RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << "The ClapTrap " << this->name << " was born and copy the ClapTrap " << other.name << std::endl;
+	std::cout << BOLD_CYAN << "The ClapTrap " << this->name << " was born and copy the ClapTrap " << other.name << RESET << std::endl;
 	*this = other;
 }
 
@@ -32,51 +33,51 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (this->hitPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->name << " is dead and can't attack !" << std::endl;
+		std::cout << BOLD_RED << "ClapTrap " << this->name << " is dead and can't attack !" << RESET << std::endl;
 		return ;
 	}
 	else if (this->energyPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->name << " has no energy and can't attack !" << std::endl;
+		std::cout << BOLD_RED << "ClapTrap " << this->name << " has no energy and can't attack !" << RESET << std::endl;
 		return ;
 	}
 	this->energyPoints -= 1;
-	std::cout << "ClapTrap " << this->name << " attack " << target << ", causing " << this->attackPoints << " points of damage!" << std::endl;
+	std::cout << BOLD_GREEN << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attackPoints << " points of damage!" << RESET << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->hitPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->name << " is dead and can't be repaired !" << std::endl;
+		std::cout << BOLD_RED << "ClapTrap " << this->name << " is dead and can't be repaired !" << RESET << std::endl;
 		return ;
 	}
 	else if (this->hitPoints == 100)
 	{
-		std::cout << "ClapTrap " << this->name << " is already full life !" << std::endl;
+		std::cout << BOLD_YELLOW << "ClapTrap " << this->name << " is already full life !" << RESET << std::endl;
 		return ;
 	}
 	if (this->hitPoints + amount > 100)
 		this->hitPoints = 100;
 	else
 		this->hitPoints += amount;
-	std::cout << "ClapTrap " << this->name << " is repaired by " << amount << " points !" << std::endl;
+	std::cout << BOLD_GREEN << "ClapTrap " << this->name << " is repaired by " << amount << " points !" << RESET << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->hitPoints == 0)
 	{
-		std::cout << "ClapTrap " << this->name << " is already dead !" << std::endl;
+		std::cout << BOLD_RED << "ClapTrap " << this->name << " is already dead !" << RESET << std::endl;
 		return ;
 	}
 	if (this->hitPoints < amount)
 	{
 		this->hitPoints = 0;
-		std::cout << "ClapTrap " << this->name << " is already dead !" << std::endl;
+		std::cout << BOLD_RED << "ClapTrap " << this->name << " is already dead !" << RESET << std::endl;
 		return ;
 	}
 	else
 		this->hitPoints -= amount;
-	std::cout << "ClapTrap " << this->name << " take " << amount << " points of damage !" << std::endl;
+	std::cout << BOLD_RED << "ClapTrap " << this->name << " takes " << amount << " points of damage!" << RESET << std::endl;
 }
