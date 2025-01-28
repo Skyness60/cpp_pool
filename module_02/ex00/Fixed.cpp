@@ -3,13 +3,13 @@
 // Constructor default
 Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << BOLD_GREEN << "Default constructor called" << RESET << std::endl;
 	value = 0;
 }
 // Operator assignation
 Fixed &Fixed::operator=(const Fixed &copy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << BOLD_YELLOW <<"Copy assignment operator called" << RESET << std::endl;
 	if (this != &copy)
 		this->value = copy.getRawBits();
 	return (*this);
@@ -17,23 +17,23 @@ Fixed &Fixed::operator=(const Fixed &copy)
 // Constructor copy
 Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << BOLD_CYAN <<"Copy constructor called" << RESET << std::endl;
 	*this = copy;
 }
 // Destructor
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << BOLD_RED << "Destructor called" << RESET << std::endl;
 }
 // Getter
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	std::cout << BOLD_WHITE << "getRawBits member function called" << RESET << std::endl;
 	return (this->value);
 }
 // Setter
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
+	std::cout << BOLD_WHITE << "setRawBits member function called" << RESET << std::endl;
 	value = raw;
 }

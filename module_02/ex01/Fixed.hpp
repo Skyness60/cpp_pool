@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sperron <sperron@student>                  +#+  +:+       +#+        */
+/*   By: sperron <sperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:06:05 by sperron           #+#    #+#             */
-/*   Updated: 2025/01/10 19:07:39 by sperron          ###   ########.fr       */
+/*   Updated: 2025/01/28 10:48:27 by sperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 # define FIXED_HPP
 # include <iostream>
 # include <cmath>
-
+#define RESET  "\033[0m"
+#define BOLD_RED  "\033[1m\033[31m"      /* Bold Red */
+#define BOLD_GREEN  "\033[1m\033[32m"    /* Bold Green */
+#define BOLD_YELLOW  "\033[1m\033[33m"   /* Bold Yellow */
+#define BOLD_BLUE  "\033[1m\033[34m"     /* Bold Blue */
+#define BOLD_MAGENTA  "\033[1m\033[35m"  /* Bold Magenta */
+#define BOLD_CYAN  "\033[1m\033[36m"     /* Bold Cyan */
+#define BOLD_WHITE  "\033[1m\033[37m"    /* Bold White */
 // Class Fixed 
 class Fixed
 {

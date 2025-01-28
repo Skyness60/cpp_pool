@@ -4,7 +4,7 @@
 Fixed::Fixed(void)
 {
 	// Member initialization
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << BOLD_GREEN << "Default constructor called" << RESET << std::endl;
 	value = 0;
 }
 
@@ -12,21 +12,21 @@ Fixed::Fixed(void)
 Fixed::Fixed(const int value)
 {
 	// Member initialization
-	std::cout << "Int constructor called" << std::endl;
+	std::cout << BOLD_GREEN << "Int constructor called" << RESET << std::endl;
 	this->value = (value << bits);
 }
 
 // Constructor float
 Fixed::Fixed(const float floating)
 {
-	std::cout << "Float constructor called" << std::endl;
+	std::cout << BOLD_GREEN << "Float constructor called" << RESET << std::endl;
 	this->value = roundf(floating * (1 << bits));
 }
 
 // Operator assignation
 Fixed &Fixed::operator=(const Fixed &copy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << BOLD_YELLOW << "Copy assignment operator called" << RESET << std::endl;
 	if (this not_eq &copy)
 		this->value = copy.getRawBits();
 	return (*this);
@@ -34,13 +34,13 @@ Fixed &Fixed::operator=(const Fixed &copy)
 // Constructor copy
 Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << BOLD_CYAN << "Copy constructor called" << RESET << std::endl;
 	*this = copy;
 }
 // Destructor
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << BOLD_RED << "Destructor called" << RESET << std::endl;
 }
 // Getter
 int Fixed::getRawBits(void) const
