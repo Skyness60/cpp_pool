@@ -1,8 +1,7 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap("default"), FragTrap("default")
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap("default"), FragTrap("default"), name(name)
 {
-	this->name = name;
 	this->hitPoints = 100;
 	this->energyPoints = 50;
 	this->attackPoints = 30;

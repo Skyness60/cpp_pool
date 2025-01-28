@@ -1,13 +1,10 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string) : name(name), hitPoints(10), energyPoints(10), attackPoints(0)
 {
-	this->name = name;
-	this->hitPoints = 10;
-	this->energyPoints = 10;
-	this->attackPoints = 0;
 	std::cout << "The ClapTrap " << this->name << " was bord !" << std::endl;
 }
+
 ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 {
 	if (this not_eq &copy)
