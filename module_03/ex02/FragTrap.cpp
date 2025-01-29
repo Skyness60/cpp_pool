@@ -1,5 +1,6 @@
 #include "FragTrap.hpp"
 
+// constructor with name
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	this->name = name;
@@ -9,6 +10,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	std::cout << BOLD_GREEN << "The FragTrap " << this->name << " was bord !" << RESET << std::endl;
 }
 
+// copy constructor
 FragTrap &FragTrap::operator=(const FragTrap &copy)
 {
 	std::cout << BOLD_YELLOW <<"Copy assignment operator called" << RESET << std::endl;
@@ -22,17 +24,20 @@ FragTrap &FragTrap::operator=(const FragTrap &copy)
 	return (*this);
 }
 
+// copy constructor
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
 	std::cout << BOLD_CYAN << "The FragTrap " << this->name << " was born and copy the FragTrap " << other.name << RESET << std::endl;
 	*this = other;
 }
 
+// destructor
 FragTrap::~FragTrap()
 {
 	std::cout << BOLD_RED << "The FragTrap " << this->name << " is dead !" << RESET << std::endl;
 }
 
+// high fives guys method only for FragTrap
 void	FragTrap::highFivesGuys(void)
 {
 	std::cout << BOLD_MAGENTA << "FragTrap " << this->name << " high fives guys ! ✋" << RESET << std::endl;
