@@ -2,24 +2,24 @@
 
 Dog::Dog() : Animal("Dog")
 {
-	std::cout << "Dog constructor called" << std::endl;
+	std::cout << BOLD_GREEN << "Dog constructor called" << RESET << std::endl;
 }
 
 // Constructor with type
 Dog::Dog(std::string type) : Animal(type)
 {
-	std::cout << "Dog" << type << " constructor called" << std::endl;
+	std::cout << BOLD_GREEN << "Dog " << type << " constructor called" << RESET << std::endl;
 }
 
 Dog::Dog(const Dog &other) : Animal(other)
 {
-	std::cout << "Dog copy constructor called" << std::endl;
+	std::cout << BOLD_CYAN << "Dog " << other.type << " copy constructor called" << RESET << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &copy)
 {
 	if (this != &copy) {
-		this->type = copy.type;
+		Animal::operator=(copy);
 	}
 	return *this;
 }
