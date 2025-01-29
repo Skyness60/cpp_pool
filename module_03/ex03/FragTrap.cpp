@@ -6,11 +6,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->hitPoints = 100;
 	this->energyPoints = 100;
 	this->attackPoints = 30;
-	std::cout << "The FragTrap " << this->name << " was bord !" << std::endl;
+	std::cout << BOLD_GREEN << "The FragTrap " << this->name << " was bord !" << RESET << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &copy)
 {
+	std::cout << BOLD_YELLOW <<"Copy assignment operator called" << RESET << std::endl;
 	if (this not_eq &copy)
 	{
 		this->name = copy.name;
@@ -23,16 +24,16 @@ FragTrap &FragTrap::operator=(const FragTrap &copy)
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
 {
-	std::cout << "The FragTrap " << this->name << " was born and copy the FragTrap " << other.name << std::endl;
+	std::cout << BOLD_CYAN << "The FragTrap " << this->name << " was born and copy the FragTrap " << other.name << RESET << std::endl;
 	*this = other;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << "The FragTrap " << this->name << " is dead !" << std::endl;
+	std::cout << BOLD_RED << "The FragTrap " << this->name << " is dead !" << RESET << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap " << this->name << " high fives guys ! ✋" << std::endl;
+	std::cout << BOLD_MAGENTA << "FragTrap " << this->name << " high fives guys ! ✋" << RESET << std::endl;
 }

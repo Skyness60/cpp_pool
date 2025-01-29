@@ -1,7 +1,7 @@
 COMP = c++
 CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 
-NAME = a.out
+NAME = two_children
 
 SRC =	ClapTrap.cpp \
 		ScavTrap.cpp \

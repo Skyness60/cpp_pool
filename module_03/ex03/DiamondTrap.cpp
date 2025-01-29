@@ -5,11 +5,12 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	this->hitPoints = FragTrap::hitPoints;
 	this->energyPoints = ScavTrap::energyPoints;
 	this->attackPoints = FragTrap::attackPoints;
-	std::cout << "The DiamondTrap " << this->name << " was bord !" << std::endl;
+	std::cout << BOLD_GREEN << "The DiamondTrap " << this->name << " was bord !" << RESET << std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 {
+	std::cout << BOLD_YELLOW <<"Copy assignment operator called" << RESET << std::endl;
 	if (this not_eq &copy)
 	{
 		this->name = copy.name;
@@ -22,16 +23,16 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap("default"), FragTrap("default")
 {
-	std::cout << "The DiamondTrap " << this->name << " was born and copy the DiamondTrap " << other.name << std::endl;
+	std::cout << BOLD_CYAN << "The DiamondTrap " << this->name << " was born and copy the DiamondTrap " << other.name << RESET << std::endl;
 	*this = other;
 }
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "The DiamondTrap " << this->name << " is dead !" << std::endl;
+	std::cout << BOLD_RED << "The DiamondTrap " << this->name << " is dead !" << RESET << std::endl;
 }
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "I am " << this->name << " and my ClapTrap name is " << ClapTrap::name << std::endl;
+	std::cout << BOLD_MAGENTA << "I am " << this->name << " and my ClapTrap name is " << ClapTrap::name << RESET << std::endl;
 }

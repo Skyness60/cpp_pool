@@ -2,6 +2,7 @@
 
 int	main()
 {
+	std::cout << "\033[H\033[J";
 	ClapTrap	toto("toto");
 	ClapTrap	tata("tata");
 	std::cout << BOLD_WHITE << "===================" << RESET << std::endl;
