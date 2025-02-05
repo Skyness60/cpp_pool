@@ -1,31 +1,42 @@
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
+// include <iostream>
 #include <iostream>
+// include <string>
 #include <string>
+// include Brain class
 #include "Brain.hpp"
-/**
- * @class Animal
- * @brief Classe de base abstraite représentant un animal.
- *
- * La classe Animal sert de classe de base pour d'autres classes d'animaux.
- * Elle contient un type d'animal et des méthodes pour obtenir ce type et 
- * produire un son spécifique à l'animal.
- *
- * @note La méthode makeSound() est virtuelle pure, ce qui signifie que 
- * toute classe dérivée doit la définir. Le destructeur est virtuel pour 
- * garantir que le destructeur de la classe dérivée est appelé correctement.
- * en gros c'est une classe abstraite. (pas d'objet de cette classe)
- */
+
+// color for the output
+#define RESET  "\033[0m"
+#define BOLD_RED  "\033[1m\033[31m"      /* Bold Red */
+#define BOLD_GREEN  "\033[1m\033[32m"    /* Bold Green */
+#define BOLD_YELLOW  "\033[1m\033[33m"   /* Bold Yellow */
+#define BOLD_BLUE  "\033[1m\033[34m"     /* Bold Blue */
+#define BOLD_MAGENTA  "\033[1m\033[35m"  /* Bold Magenta */
+#define BOLD_CYAN  "\033[1m\033[36m"     /* Bold Cyan */
+#define BOLD_WHITE  "\033[1m\033[37m"    /* Bold White */
+
+// Class Animal
 class Animal {
+	// protected attributes
 	protected:
 		std::string type;
+	// public methods
 	public:
+		// constructor default
 		Animal(void);
+		// constructor with type
 		Animal(std::string type);
+		// copy constructor
 		Animal(const Animal &other);
+		// operator overload
 		Animal &operator=(const Animal &copy);
+		// destructor
 		virtual ~Animal(); // virtual destructor 
+		// make sound virtual method
 		virtual void makeSound() const;
+		// get type method
 		std::string getType() const;
 };
 #endif // !ANIMAL_HPP

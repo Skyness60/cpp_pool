@@ -32,7 +32,7 @@ Character::Character(const Character &other) : name(other.name)
 Character &Character::operator=(const Character &copy)
 {
 	std::cout << "Assignment operator called" << std::endl;
-	if (this != &copy)
+	if (this not_eq &copy)
 	{
 		this->name = copy.name;
 		for (int i = 0; i < 4; i++)
@@ -79,13 +79,13 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
 	std::cout << "Unequip called" << std::endl;
-	if (idx >= 0 && idx < 4)
+	if (idx >= 0 and idx < 4)
 		this->inventory[idx] = nullptr;
 }
 
 void Character::use(int idx, ICharacter &target)
 {
 	std::cout << "Use called" << std::endl;
-	if (idx >= 0 && idx < 4 && this->inventory[idx])
+	if (idx >= 0 and idx < 4 and this->inventory[idx])
 		this->inventory[idx]->use(target);
 }

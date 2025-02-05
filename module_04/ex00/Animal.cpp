@@ -3,7 +3,7 @@
 // Constructor default
 Animal::Animal() : type("default")
 {
-	std::cout << BOLD_GREEN << "Animal " << "default" << " constructor called" << RESET << std::endl;
+	std::cout << BOLD_GREEN << "Animal " << type << " constructor called" << RESET << std::endl;
 }
 
 // Constructor with type
@@ -44,5 +44,5 @@ std::string Animal::getType() const
 // Make sound method
 void Animal::makeSound(void) const
 {
-	std::cout << BOLD_MAGENTA << "Animal" << this->type << " make a sound" << RESET << std::endl;
+	std::cout << BOLD_MAGENTA << "Animal " << this->type << " make a sound" << RESET << std::endl;
 }

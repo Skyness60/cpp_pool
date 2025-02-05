@@ -13,7 +13,7 @@ Cure::Cure(const Cure &copy) : AMateria(copy)
 Cure &Cure::operator=(const Cure &copy)
 {
 	std::cout << "Cure assignment operator called" << std::endl;
-	if (this != &copy)
+	if (this not_eq &copy)
 	{
 		this->type = copy.type;
 	}

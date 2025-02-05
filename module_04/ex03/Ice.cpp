@@ -12,7 +12,7 @@ Ice::Ice(const Ice &copy) : AMateria(copy) {
 Ice &Ice::operator=(const Ice &copy)
 {
 	std::cout << "Ice assignment operator called" << std::endl;
-	if (this != &copy)
+	if (this not_eq &copy)
 	{
 		this->type = copy.type;
 	}

@@ -18,7 +18,8 @@ Dog::Dog(const Dog &other) : Animal(other)
 
 Dog &Dog::operator=(const Dog &copy)
 {
-	if (this != &copy) {
+	std::cout << BOLD_CYAN << "Dog " << copy.type << " assignation operator called" << RESET << std::endl;
+	if (this not_eq &copy) {
 		Animal::operator=(copy);
 	}
 	return *this;
@@ -26,10 +27,10 @@ Dog &Dog::operator=(const Dog &copy)
 
 Dog::~Dog()
 {
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << BOLD_RED << "Dog destructor called" << RESET << std::endl;
 }
 
 void Dog::makeSound() const
 {
-	std::cout << this->type << " say WOOOUUUUFF" << std::endl;
+	std::cout << BOLD_MAGENTA << this->type << " say WOOOUUUUFF" << RESET << std::endl;
 }
