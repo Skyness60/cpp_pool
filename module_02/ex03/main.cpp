@@ -29,7 +29,7 @@ bool isOnEdge(Point p1, Point p2, Point p) {
 }
 
 int main() {
-    Point a(0, 0), b(10, 0), c(0, 10), point(5, 5);
+    Point a(0, 0), b(10, 0), c(0, 10), point(2, 5);
 
     int maxX = Fixed::max(Fixed::max(a.getX(), b.getX()), c.getX()).toInt();
     int maxY = Fixed::max(Fixed::max(a.getY(), b.getY()), c.getY()).toInt();

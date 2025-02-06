@@ -1,8 +1,5 @@
 #include "Character.hpp"
 
-#include <iostream>
-#include "Character.hpp"
-
 Character::Character() : name("default")
 {
 	std::cout << "Default constructor called" << std::endl;
@@ -58,6 +55,13 @@ Character::~Character()
 	}
 }
 
+AMateria* Character::getMateria(int index) const {
+    if (index >= 0 && index < 4)
+        return inventory[index];
+    return nullptr;
+}
+
+
 std::string const &Character::getName() const
 {
 	return this->name;
@@ -80,7 +84,13 @@ void Character::unequip(int idx)
 {
 	std::cout << "Unequip called" << std::endl;
 	if (idx >= 0 and idx < 4)
-		this->inventory[idx] = nullptr;
+	{
+		if (this->inventory[idx])
+		{
+			delete this->inventory[idx];
+			this->inventory[idx] = nullptr;
+		}
+	}
 }
 
 void Character::use(int idx, ICharacter &target)
