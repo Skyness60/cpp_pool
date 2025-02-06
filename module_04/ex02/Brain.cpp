@@ -1,26 +1,26 @@
 #include "Brain.hpp"
 
-// Constructor default
 Brain::Brain() {
 	std::cout << BOLD_GREEN << "Brain constructor called" << RESET << std::endl;
 }
 
-// Copy Constructor
 Brain::Brain(const Brain &copy) {
 	std::cout << BOLD_GREEN << "Brain copy constructor called" << RESET << std::endl;
-	*this = copy;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = copy.ideas[i];
 }
 
-// Destructor
 Brain::~Brain() {
 	std::cout << BOLD_RED << "Brain destructor called" << RESET << std::endl;
 }
 
-// Assignation operator
 Brain &Brain::operator=(const Brain &copy) {
-	std::cout << BOLD_YELLOW << "Brain assignation operator called" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "Brain assignation operator called" << RESET << std::endl;
 	if (this not_eq &copy)
-		*this->ideas = *copy.ideas;
+	{
+		for (int i = 0; i < 100; i++)
+			this->ideas[i] = copy.ideas[i];
+	}
 	return *this;
 }
 

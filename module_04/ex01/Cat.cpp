@@ -24,8 +24,9 @@ Cat &Cat::operator=(const Cat &copy)
 	std::cout << BOLD_CYAN << "Cat" << copy.type << " assignation operator called" << RESET << std::endl;
 	if (this not_eq &copy)
 	{
+		delete this->catbrain;
 		this->type = copy.type;
-		this->catbrain->setIdeas(copy.catbrain->getIdeas());
+		this->catbrain = new Brain(*copy.catbrain);
 	}
 	return (*this);
 }

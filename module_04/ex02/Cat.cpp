@@ -9,23 +9,24 @@ Cat::Cat() : AAnimal("Cat"), catbrain(new Brain())
 // Constructor with type
 Cat::Cat(std::string type) : AAnimal(type), catbrain(new Brain())
 {
-	std::cout << BOLD_GREEN << "Cat " << type << " constructor called" << RESET << std::endl;
+	std::cout << BOLD_GREEN << "Cat" << type << " constructor called" << RESET << std::endl;
 }
 
 // Copy Constructor
 Cat::Cat(const Cat &other) : AAnimal(other), catbrain(new Brain(*other.catbrain))
 {
-	std::cout << BOLD_CYAN << "Cat " << other.type << " copy constructor called" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "Cat" << other.type << " copy constructor called" << RESET << std::endl;
 }
 
 // Assignation operator
 Cat &Cat::operator=(const Cat &copy)
 {
-	std::cout << BOLD_YELLOW << "Cat " << copy.type << " assignation operator called" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "Cat" << copy.type << " assignation operator called" << RESET << std::endl;
 	if (this not_eq &copy)
 	{
+		delete this->catbrain;
 		this->type = copy.type;
-		this->catbrain->setIdeas(copy.catbrain->getIdeas());
+		this->catbrain = new Brain(*copy.catbrain);
 	}
 	return (*this);
 }

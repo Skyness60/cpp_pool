@@ -6,7 +6,8 @@ Brain::Brain() {
 
 Brain::Brain(const Brain &copy) {
 	std::cout << BOLD_GREEN << "Brain copy constructor called" << RESET << std::endl;
-	*this = copy;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = copy.ideas[i];
 }
 
 Brain::~Brain() {
@@ -16,7 +17,10 @@ Brain::~Brain() {
 Brain &Brain::operator=(const Brain &copy) {
 	std::cout << BOLD_CYAN << "Brain assignation operator called" << RESET << std::endl;
 	if (this not_eq &copy)
-		*this->ideas = *copy.ideas;
+	{
+		for (int i = 0; i < 100; i++)
+			this->ideas[i] = copy.ideas[i];
+	}
 	return *this;
 }
 

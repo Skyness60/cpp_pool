@@ -8,20 +8,21 @@ Dog::Dog() : AAnimal("Dog"), dogbrain(new Brain())
 // Constructor with type
 Dog::Dog(std::string type) : AAnimal(type), dogbrain(new Brain())
 {
-	std::cout << BOLD_GREEN << "Dog " << type << " constructor called" << RESET << std::endl;
+	std::cout << BOLD_GREEN << "Dog" << type << " constructor called" << RESET << std::endl;
 }
 
 Dog::Dog(const Dog &other) : AAnimal(other), dogbrain(new Brain(*other.dogbrain))
 {
-	std::cout << BOLD_CYAN << "Dog " << other.type << " copy constructor called" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "Dog" << other.type << " copy constructor called" << RESET << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &copy)
 {
-	std::cout << BOLD_YELLOW << "Dog " << copy.type << " assignation operator called" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "Dog" << copy.type << " assignation operator called" << RESET << std::endl;
 	if (this not_eq &copy) {
 		this->type = copy.type;
-		this->dogbrain->setIdeas(copy.dogbrain->getIdeas());
+		delete this->dogbrain;
+		this->dogbrain = new Brain(*copy.dogbrain);
 	}
 	return *this;
 }

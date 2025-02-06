@@ -21,7 +21,8 @@ Dog &Dog::operator=(const Dog &copy)
 	std::cout << BOLD_CYAN << "Dog" << copy.type << " assignation operator called" << RESET << std::endl;
 	if (this not_eq &copy) {
 		this->type = copy.type;
-		this->dogbrain->setIdeas(copy.dogbrain->getIdeas());
+		delete this->dogbrain;
+		this->dogbrain = new Brain(*copy.dogbrain);
 	}
 	return *this;
 }
