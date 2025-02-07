@@ -5,7 +5,7 @@
 
 MateriaSource::MateriaSource() : count(0)
 {
-	std::cout << "MateriaSource default constructor called" << std::endl;
+	std::cout << "MateriaSource constructeur appelé" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->materia[i] = nullptr;
 }

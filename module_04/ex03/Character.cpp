@@ -9,7 +9,7 @@ Character::Character() : name("default")
 
 Character::Character(std::string name) : name(name)
 {
-	std::cout << "Parameterized constructor called" << std::endl;
+	std::cout << "Création du personnage " << name << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = nullptr;
 }
@@ -69,8 +69,9 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
+	int i;
 	std::cout << "Equip called" << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (!this->inventory[i])
 		{
