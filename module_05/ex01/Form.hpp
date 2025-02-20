@@ -13,13 +13,16 @@
 // include "Bureaucrat.hpp"
 #include "Bureaucrat.hpp"
 
+// Class Bureaucrat
+class Bureaucrat;
+
 // class Form
 class Form {
     private:
         const std::string name;
         const int gradeSign;
         const int gradeExec;
-        bool issigned;
+        bool isSigned;
     public:
         // GradeTooHighException class herited from std::exception
         class GradeTooHighException : public std::exception {

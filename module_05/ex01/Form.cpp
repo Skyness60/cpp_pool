@@ -1,16 +1,16 @@
 #include "Form.hpp"
 
 // constructor
-Form::Form(const std::string name, int gradeSign, int gradeExec) : name(name), gradeSign(gradeSign), gradeExec(gradeExec), issigned(false) {
+Form::Form(const std::string name, int gradeSign, int gradeExec) : name(name), gradeSign(gradeSign), gradeExec(gradeExec), isSigned(false) {
     std::cout << BOLD_GREEN "constructor Form " << this->name << " created" RESET << std::endl;
-    if (gradeSign < 1 or gradeExec < 1)
-        throw Form::GradeTooLowException();
-    else if (gradeSign > 150 or gradeExec > 150)
+    if (gradeSign < MAX_GRADE or gradeExec < MAX_GRADE)
         throw Form::GradeTooHighException();
+    else if (gradeSign > MIN_GRADE or gradeExec > MIN_GRADE)
+        throw Form::GradeTooLowException();
 }
 
 // copy constructor
-Form::Form(const Form &copy) : name(copy.name), gradeSign(copy.gradeSign), gradeExec(copy.gradeExec), issigned(copy.issigned)
+Form::Form(const Form &copy) : name(copy.name), gradeSign(copy.gradeSign), gradeExec(copy.gradeExec), isSigned(copy.isSigned)
 {
     std::cout << BOLD_GREEN "copy constructor Form " << this->name << " created" RESET << std::endl;
 }
@@ -25,7 +25,7 @@ Form::~Form()
 Form &Form::operator=(const Form &copy) {
     std::cout << BOLD_GREEN "assignation operator Form " << this->name << " created" RESET << std::endl;
     if (this not_eq &copy) {
-        this->issigned = copy.issigned;
+        this->isSigned = copy.isSigned;
     }
     return *this;
 }
@@ -47,14 +47,19 @@ int Form::getGradeExec(void) const {
 
 // get signed method
 bool Form::getSigned(void) const {
-    return this->issigned;
+    return this->isSigned;
 }
 
 // beSigned method
 void Form::beSigned(const Bureaucrat &bureaucrat) {
     if (bureaucrat.getGrade() > this->gradeSign)
         throw Form::GradeTooLowException();
-    this->issigned = true;
+    else if (this->isSigned == true)
+        std::cout << BOLD_RED << bureaucrat.getName() << " cannot sign " << this->name << " because it is already signed" << RESET << std::endl;
+    else {
+        std::cout << BOLD_GREEN << bureaucrat.getName() << " signed " << this->name << RESET << std::endl;
+        this->isSigned = true;
+    }
 }
 
 // what method

@@ -4,7 +4,8 @@ CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
 NAME = Bureaucrat
 
 SRC =	main.cpp \
-		Bureaucrat.cpp
+		Bureaucrat.cpp \
+		Form.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

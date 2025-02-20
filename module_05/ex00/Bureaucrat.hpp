@@ -20,6 +20,11 @@
 # define BOLD_CYAN  "\033[1m\033[36m"     /* Bold Cyan */
 # define BOLD_WHITE  "\033[1m\033[37m"    /* Bold White */
 
+// Maximum grade
+#define MAX_GRADE 1
+// Minimum grade
+#define MIN_GRADE 150
+
 // Bureaucrat class
 class Bureaucrat {
     // private attributes

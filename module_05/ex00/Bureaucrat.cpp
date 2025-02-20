@@ -3,10 +3,10 @@
 // constructor
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade) {
     std::cout << BOLD_GREEN "constructor Bureaucrat " << this->name << " created" RESET << std::endl;
-    if (grade < 1)
-        throw Bureaucrat::GradeTooLowException();
-    else if (grade > 150)
+    if (grade < MAX_GRADE)
         throw Bureaucrat::GradeTooHighException();
+    else if (grade > MIN_GRADE)
+        throw Bureaucrat::GradeTooLowException();
 }
 
 // copy constructor
@@ -42,14 +42,14 @@ int Bureaucrat::getGrade(void) const {
 
 // increment grade method
 void Bureaucrat::incrementGrade(void) {
-    if (this->grade + 1 > 150)
+    if (this->grade + 1 > MIN_GRADE)
         throw Bureaucrat::GradeTooLowException();
     this->grade++;
 }
 
 // decrement grade method
 void Bureaucrat::decrementGrade(void) {
-    if (this->grade - 1 < 1)
+    if (this->grade - 1 < MAX_GRADE)
         throw Bureaucrat::GradeTooHighException();
     this->grade--;
 }
