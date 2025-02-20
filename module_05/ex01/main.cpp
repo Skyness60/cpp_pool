@@ -83,7 +83,7 @@ int main() {
         std::cout << "\033[1;36m" << "╠════════════════════════════════╣" << "\033[0m" << std::endl;
         std::cout << "\033[1;36m" << "║ \033[1;32m1\033[1;36m    - Create a Bureaucrat     ║" << "\033[0m" << std::endl;
         std::cout << "\033[1;36m" << "║ \033[1;33m2\033[1;36m    - Create a Form           ║" << "\033[0m" << std::endl;
-        std::cout << "\033[1;36m" << "║ \033[1;33m3\033[1;36m    - Sign a Form             ║" << "\033[0m" << std::endl;
+        std::cout << "\033[1;36m" << "║ \033[1;34m3\033[1;36m    - Sign a Form             ║" << "\033[0m" << std::endl;
         std::cout << "\033[1;36m" << "║ \033[1;31m4\033[1;36m    - Exit                    ║" << "\033[0m" << std::endl;
         std::cout << "\033[1;36m" << "╚════════════════════════════════╝" << "\033[0m" << std::endl;
         std::cout << "\033[1;36m" << "Enter your choice: " << "\033[0m";

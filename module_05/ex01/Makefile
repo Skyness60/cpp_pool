@@ -9,51 +9,35 @@ SRC =	main.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME)
-	@echo "\033[32m💥 Compilation terminée avec succès ! 💥\033[0m"
-	@echo "\033[33m🔨 Le projet est prêt à être utilisé ! 🎉\033[0m"
+all: clear_terminal $(NAME)
+	@echo "\033[1;32m💥 Compilation terminée ! 💥\033[0m"
+	@echo "\033[1;33m🔨 Projet prêt ! 🎉\033[0m"
+	@echo "\033[1;33m🔨 Lancer avec ./$(NAME) 🎉\033[0m"
+	@echo "\033[1;33m✨ N'hésite pas à donner un outstanding project ! 🎉\033[0m"
+
+clear_terminal:
+	@clear
 
 $(NAME): $(OBJ)
-	@echo "\033[1;33m🔧 Liaison des fichiers objets en un exécutable...\033[0m"
-	@$(MAKE) -s progress_bar
+	@echo "\033[1;33m🔧 Liaison...\033[0m"
 	@$(COMP) $(CFLAG) $(OBJ) -o $(NAME)
-	@$(MAKE) -s done
-	@echo "\033[32m🚀 Génération de $(NAME) terminée !\033[0m"
+	@echo "\033[1;32m🚀 $(NAME) généré !\033[0m"
 
 %.o: %.cpp
-	@$(MAKE) -s progress_bar
-	@echo "\033[1;34m📂 Compilation de $< en $@...\033[0m"
+	@echo "\033[1;34m📂 Compilation $<...\033[0m"
 	@$(COMP) $(CFLAG) -c $< -o $@
-	@$(MAKE) -s done
-	@echo "\033[32m✅ $< compilé avec succès !\033[0m"
+	@echo "\033[1;32m✅ $< compilé !\033[0m"
 
-clean:
-	@echo "\033[1;31m🧹 Suppression des fichiers objets...\033[0m"
+clean: clear_terminal
+	@echo "\033[1;31m🧹 Suppression des .o...\033[0m"
 	@rm -f $(OBJ)
-	@echo "\033[32m🗑️ Fichiers objets supprimés.\033[0m"
+	@echo "\033[1;32m🗑️ .o supprimés.\033[0m"
 
 fclean: clean
-	@echo "\033[1;31m🔥 Suppression de l'exécutable $(NAME)...\033[0m"
+	@echo "\033[1;31m🔥 Suppression $(NAME)...\033[0m"
 	@rm -f $(NAME)
-	@echo "\033[32m🔥 $(NAME) supprimé.\033[0m"
+	@echo "\033[1;32m🔥 $(NAME) supprimé.\033[0m"
 
 re: fclean all
 
-progress_bar:
-	@echo -n "\033[1;34m⏳ Chargement"
-	@for i in $(shell seq 1 10); do \
-		sleep 0.1; \
-		echo -n "."; \
-	done
-	@echo "\033[0m"
-
-done:
-	@echo -n "\033[1;32m✅ "
-	@for i in $(shell seq 1 3); do \
-		sleep 0.2; \
-		echo -n "."; \
-	done
-	@echo " terminé !\033[0m"
-
-
-.PHONY: all clean fclean re progress_bar done dev
+.PHONY: all clean fclean re clear_terminal
