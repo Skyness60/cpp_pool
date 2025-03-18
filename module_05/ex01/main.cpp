@@ -62,7 +62,8 @@ int main() {
     bool isRunning = true;
     std::string input;
     int countB = 0;
-    int countF = 0;
+	int	ii = 0;
+	int countF = 0;
     std::cout << BOLD_BLUE "Welcome to the Bureaucrat program!" RESET << std::endl;
     std::pair<std::string, int> dataB[100] = {};
 	Bureaucrat* bureaucrats[] = {};
@@ -246,7 +247,6 @@ int main() {
         {
 			clearScreen();
 			bool isRunningChoiceBureaucrat = true;
-			std::string index;
 			if (countB == 0 || countF == 0)
 			{
 				std::cout << BOLD_RED << "You need to create at least one bureaucrat and one form" << RESET << std::endl;
@@ -254,21 +254,21 @@ int main() {
 			}
 			while (isRunningChoiceBureaucrat)
 			{
-            	clearScreen();
-				int	ii = 0;
+				std::string index;
+				int	count = 1;
 				std::cout << "\033[1;36m" << "╔════════════════════════════════╗" << "\033[0m" << std::endl;
 				std::cout << "\033[1;36m" << "║       Status Bureaucrat :      ║" << "\033[0m" << std::endl;
 				std::cout << "\033[1;36m" << "║┌──────────────┬───────────────┐║" << std::endl;
 				std::cout << "\033[1;36m" << "║|" << std::setw(9) << "Name" << std::setw(6) << "|" << std::setw(10) << "Grade" << "     |║" << "\033[0m" << std::endl;
 				std::cout << "\033[1;36m" << "║├──────────────┼───────────────┤║" << std::endl;
 				while (ii < countB) {
-					std::string indexString = intToString(ii);
-					std::cout << indexString << std::endl;
-					std::cout << "\033[1;36m" << "║|" << std::setw(10) << truncate(indexString + " : " + dataB[ii].first) << std::setw(5) << "|" << std::setw(8) << dataB[ii].second << std::setw(11) << "|║" << "\033[0m" << std::endl;
+					std::cout << "\033[1;36m" << "║|" << std::setw(10) << truncate(intToString(count) + " : " + dataB[ii].first) << std::setw(5) << "|" << std::setw(8) << dataB[ii].second << std::setw(11) << "|║" << "\033[0m" << std::endl;
 					if (ii < countB - 1)
 						std::cout << "\033[1;36m" << "║├──────────────┼───────────────├║" << "\033[0m" << std::endl;
+					count++;
 					ii++;
 				}
+				ii = 0;
 				std::cout << "\033[1;36m" << "║└──────────────┴───────────────┘║" << "\033[0m" << std::endl;
 				std::cout << "\033[1;36m" << "╠════════════════════════════════╣" << "\033[0m" << std::endl;
 				std::cout << "\033[1;36m" << "║ \033[1;31mBack\033[1;36m    - Exit                 ║" << "\033[0m" << std::endl;
@@ -285,6 +285,7 @@ int main() {
 				}
 				if (index.empty())
 				{
+					clearScreen();
 					std::cout << BOLD_RED << "Index cannot be empty" << RESET << std::endl;
 					continue ;
 				}
@@ -296,22 +297,25 @@ int main() {
 				}
 				if (stringToInt(index.c_str()) == 0)
 				{
+					clearScreen();
 					std::cout << BOLD_RED << "Index must be a number" << RESET << std::endl;
 					continue ;
 				}
-				int i = stringToInt(index.c_str());
-				if (i < 0 || i >= countB)
+				int	indexstring = stringToInt(index.c_str());
+				if (indexstring < 0 || indexstring > countB)
 				{
+					clearScreen();
 					std::cout << BOLD_RED << "Index out of range" << RESET << std::endl;
 					continue ;
 				}
-				if (i <= countB)
+				if (indexstring <= countB)
 				{
 					clearScreen();
 					bool isRunningChoiceForm = true;
 					std::string indexForm;
 					while (isRunningChoiceForm)
 					{
+						int	count = 1;
 						clearScreen();
 						std::cout << "\033[1;36m" << "╔════════════════════════════════╗" << "\033[0m" << std::endl;
 						std::cout << "\033[1;36m" << "║          Status Form :         ║" << "\033[0m" << std::endl;
@@ -319,14 +323,38 @@ int main() {
 						std::cout << "\033[1;36m" << "║|" << std::setw(9) << "Name" << std::setw(6) << "|" << std::setw(10) << "Sign" << "     |║" << "\033[0m" << std::endl;
 						std::cout << "\033[1;36m" << "║├──────────────┼───────────────┤║" << std::endl;
 						for (int i = 0; i < countF; i++) {
-							std::cout << "\033[1;36m" << "║|" << std::setw(10) << truncate(intToString(i) + " : " + dataF[i].first) << std::setw(5) << "|" << std::setw(8);
+							std::cout << "\033[1;36m" << "║|" << std::setw(10) << truncate(intToString(count) + " : " + dataF[i].first) << std::setw(5) << "|" << std::setw(8);
 							if (!dataF[i].second)
 								std::cout << "\033[1;36m" << std::setw(8)  << "❌" << std::setw(11) << "|║" << std::endl;
 							if (i < countF - 1)
 								std::cout << "\033[1;36m" << "║├──────────────┼───────────────├║" << "\033[0m" << std::endl;
+							count++;
 						}
 						std::cout << "\033[1;36m" << "║└──────────────┴───────────────┘║" << "\033[0m" << std::endl;
 						std::cout << "\033[1;36m" << "╠════════════════════════════════╣" << "\033[0m" << std::endl;
+						std::cout << "\033[1;36m" << "║ \033[1;31mBack\033[1;36m    - Exit                 ║" << "\033[0m" << std::endl;
+						std::cout << "\033[1;36m" << "╚════════════════════════════════╝" << "\033[0m" << std::endl;
+						std::cout << "\033[1;36m" << "Enter the index of the form for sign: " << "\033[0m";
+						getline(std::cin, indexForm);
+						if (std::cin.eof())
+						{
+							clearScreen();
+							isRunning = false;
+							isRunningChoiceBureaucrat = false;
+							break;
+						}
+						if (indexForm.empty())
+						{
+							clearScreen();
+							std::cout << BOLD_RED << "Index cannot be empty" << RESET << std::endl;
+							continue;
+						}
+						if (indexForm == "Back" || indexForm == "back" || indexForm == "BACK")
+						{
+							clearScreen();
+							isRunningChoiceForm = false;
+							break ;
+						}
 					}
 				}
 			}
