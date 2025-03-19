@@ -316,18 +316,20 @@ int main() {
 					while (isRunningChoiceForm)
 					{
 						int	count = 1;
-						clearScreen();
 						std::cout << "\033[1;36m" << "╔════════════════════════════════╗" << "\033[0m" << std::endl;
 						std::cout << "\033[1;36m" << "║          Status Form :         ║" << "\033[0m" << std::endl;
 						std::cout << "\033[1;36m" << "║┌──────────────┬───────────────┐║" << std::endl;
 						std::cout << "\033[1;36m" << "║|" << std::setw(9) << "Name" << std::setw(6) << "|" << std::setw(10) << "Sign" << "     |║" << "\033[0m" << std::endl;
 						std::cout << "\033[1;36m" << "║├──────────────┼───────────────┤║" << std::endl;
 						for (int i = 0; i < countF; i++) {
-							std::cout << "\033[1;36m" << "║|" << std::setw(10) << truncate(intToString(count) + " : " + dataF[i].first) << std::setw(5) << "|" << std::setw(8);
 							if (!dataF[i].second)
-								std::cout << "\033[1;36m" << std::setw(8)  << "❌" << std::setw(11) << "|║" << std::endl;
-							if (i < countF - 1)
-								std::cout << "\033[1;36m" << "║├──────────────┼───────────────├║" << "\033[0m" << std::endl;
+							{
+								std::cout << "\033[1;36m" << "║|" << std::setw(10) << truncate(intToString(count) + " : " + dataF[i].first) << std::setw(5) << "|" << std::setw(8);
+								if (!dataF[i].second)
+									std::cout << "\033[1;36m" << std::setw(8) << forms[i]->getGradeSign() << std::setw(10) << "|║" << std::endl;
+								if (i < countF - 1)
+									std::cout << "\033[1;36m" << "║├──────────────┼───────────────├║" << "\033[0m" << std::endl;
+							}
 							count++;
 						}
 						std::cout << "\033[1;36m" << "║└──────────────┴───────────────┘║" << "\033[0m" << std::endl;
@@ -354,6 +356,35 @@ int main() {
 							clearScreen();
 							isRunningChoiceForm = false;
 							break ;
+						}
+						if (stringToInt(indexForm.c_str()) == 0)
+						{
+							clearScreen();
+							std::cout << BOLD_RED << "Index must be a number" << RESET << std::endl;
+							continue ;
+						}
+						int	indexstringF = stringToInt(indexForm.c_str());
+						if (indexstringF < 0 || indexstringF > countF)
+						{
+							clearScreen();
+							std::cout << BOLD_RED << "Index out of range" << RESET << std::endl;
+							continue;
+						}
+						if (indexstringF <= countF)
+						{
+							clearScreen();
+							try {
+								bureaucrats[indexstring - 1]->signForm(*forms[indexstringF - 1]);
+								dataF[indexstringF - 1].second = true;
+								std::cout << BOLD_GREEN << "Form signed successfully" << RESET << std::endl;
+								isRunningChoiceForm = false;
+								break;
+							}
+							catch (std::exception &e) {
+								clearScreen();
+								std::cout << BOLD_RED << "Finally Form is not signed because : " << RESET << std::endl;
+								std::cout << BOLD_RED << e.what() << RESET << std::endl;
+							}
 						}
 					}
 				}
