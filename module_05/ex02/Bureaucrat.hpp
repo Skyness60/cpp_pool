@@ -13,6 +13,15 @@
 // include AForm.hpp
 #include "AForm.hpp"
 
+// include ShrubberyCreationForm.hpp
+#include "ShrubberyCreationForm.hpp"
+
+// include RobotomyRequestForm.hpp
+#include "RobotomyRequestForm.hpp"
+
+// include PresidentialPardonForm.hpp
+#include "PresidentialPardonForm.hpp"
+
 // define color for the output
 # define RESET  "\033[0m" /* Reset */
 # define BOLD_RED  "\033[1m\033[31m"      /* Bold Red */

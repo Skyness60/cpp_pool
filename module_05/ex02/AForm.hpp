@@ -63,7 +63,7 @@ class AForm {
 		// get target method
 		std::string getTarget(void) const;
         // beSigned method
-        virtual void beSigned(const Bureaucrat &bureaucrat) = 0;
+        void beSigned(const Bureaucrat &bureaucrat);
         // execute method
         virtual void execute(Bureaucrat const & executor) const = 0;
 };

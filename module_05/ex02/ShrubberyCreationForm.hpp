@@ -1,6 +1,9 @@
-#ifndef ShrubberyCreationForm_HPP  
-#define ShrubberyCreationForm_HPP  
+#ifndef SHRUBBERYCREATIONFORM_HPP  
+#define SHRUBBERYCREATIONFORM_HPP  
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm {
     public:
