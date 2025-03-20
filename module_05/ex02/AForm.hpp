@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 // include <iostream>
 #include <iostream>
@@ -17,12 +17,13 @@
 class Bureaucrat;
 
 // class Form
-class Form {
-    private:
-        const std::string name;
-        const int gradeSign;
-        const int gradeExec;
-        bool isSigned;
+class AForm {
+    protected:
+        const std::string	name;
+        std::string			target;
+        const int			gradeSign;
+        const int			gradeExec;
+        bool				isSigned;
     public:
         // GradeTooHighException class herited from std::exception
         class GradeTooHighException : public std::exception {
@@ -41,13 +42,13 @@ class Form {
         };
 
         // constructor
-        Form(const std::string name, int gradeSign, int gradeExec);
+        AForm(const std::string name, int gradeSign, int gradeExec);
         // copy constructor
-        Form(const Form &copy);
+        AForm(const AForm &copy);
         // destructor
-        ~Form();
+        virtual ~AForm();
         // assignation operator
-        Form &operator=(const Form &copy);
+        AForm &operator=(const AForm &copy);
         // get name method
         const std::string getName(void) const;
         // get grade sign method
@@ -57,6 +58,8 @@ class Form {
         // get signed method
         bool getSigned(void) const;
         // beSigned method
-        void beSigned(const Bureaucrat &bureaucrat);
+        virtual void beSigned(const Bureaucrat &bureaucrat) = 0;
+        // execute method
+        virtual void execute(Bureaucrat const & executor) const = 0;
 };
 #endif
