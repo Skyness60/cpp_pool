@@ -13,10 +13,13 @@
 // include "Bureaucrat.hpp"
 #include "Bureaucrat.hpp"
 
+// include fstream
+#include <fstream> 
+
 // Class Bureaucrat
 class Bureaucrat;
 
-// class Form
+// class AForm
 class AForm {
     protected:
         const std::string	name;
@@ -42,7 +45,7 @@ class AForm {
         };
 
         // constructor
-        AForm(const std::string name, int gradeSign, int gradeExec);
+        AForm(const std::string name, std::string target, int gradeSign, int gradeExec);
         // copy constructor
         AForm(const AForm &copy);
         // destructor
@@ -57,6 +60,8 @@ class AForm {
         int getGradeExec(void) const;
         // get signed method
         bool getSigned(void) const;
+		// get target method
+		std::string getTarget(void) const;
         // beSigned method
         virtual void beSigned(const Bureaucrat &bureaucrat) = 0;
         // execute method

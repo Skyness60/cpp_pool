@@ -10,8 +10,8 @@
 // include <string>
 #include <string>
 
-// include Form.hpp
-#include "Form.hpp"
+// include AForm.hpp
+#include "AForm.hpp"
 
 // define color for the output
 # define RESET  "\033[0m" /* Reset */
@@ -28,8 +28,8 @@
 // Minimum grade
 #define MIN_GRADE 150
 
-// Form class
-class Form;
+// AForm class
+class AForm;
 
 // Bureaucrat class
 class Bureaucrat {
@@ -56,7 +56,9 @@ class Bureaucrat {
         // decrement grade method
         void decrementGrade(void);
         // sign form method
-        void signForm(Form &form);
+        void signForm(AForm &form);
+		// execute form method
+		void executeForm(const AForm &form);
         // GradeTooHighException class herited from std::exception
         class GradeTooHighException : public std::exception {
             // public methods

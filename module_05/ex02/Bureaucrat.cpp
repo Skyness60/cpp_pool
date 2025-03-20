@@ -71,6 +71,11 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
 }
 
 // sign form method
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
     form.beSigned(*this);
+}
+
+// execute form method
+void Bureaucrat::executeForm(const AForm &form) {
+	form.execute(*this);
 }
