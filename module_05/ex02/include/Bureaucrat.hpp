@@ -10,17 +10,8 @@
 // include <string>
 #include <string>
 
-// include AForm.hpp
-#include "AForm.hpp"
-
-// include ShrubberyCreationForm.hpp
-#include "ShrubberyCreationForm.hpp"
-
-// include RobotomyRequestForm.hpp
-#include "RobotomyRequestForm.hpp"
-
-// include PresidentialPardonForm.hpp
-#include "PresidentialPardonForm.hpp"
+// AForm class
+class AForm;
 
 // define color for the output
 # define RESET  "\033[0m" /* Reset */
@@ -36,9 +27,6 @@
 #define MAX_GRADE 1
 // Minimum grade
 #define MIN_GRADE 150
-
-// AForm class
-class AForm;
 
 // Bureaucrat class
 class Bureaucrat {

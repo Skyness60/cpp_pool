@@ -1,4 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
+
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery", target, 145, 137) {
     std::cout << BOLD_GREEN "constructor ShrubberyCreationForm " << this->name << " created" RESET << std::endl;
@@ -26,8 +28,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     if (!this->getSigned())
 		return (std::cout << "Form is not signed" << std::endl, void());
-    if (executor.getGrade() > this->getGradeExec())
-        throw AForm::GradeTooLowException();
+    if (executor.getGrade() > this->getGradeExec()) {
+    	throw AForm::GradeTooLowException();
+	}
 	std::ofstream file((this->getTarget() + "_shrubbery").c_str());
     if (!file) {
         std::cout << "Error: could not create file" << std::endl;

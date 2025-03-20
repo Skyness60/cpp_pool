@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 // constructor
 AForm::AForm(const std::string name, std::string target, int gradeSign, int gradeExec) : name(name), target(target), gradeSign(gradeSign), gradeExec(gradeExec), isSigned(false) {

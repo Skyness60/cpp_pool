@@ -1,4 +1,6 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 // #include <iomanip>
 
 // int stringToInt(const char* str) {

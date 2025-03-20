@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 // constructor
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade) {

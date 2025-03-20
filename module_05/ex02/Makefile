@@ -1,17 +1,16 @@
 COMP = c++
-CFLAG = -Wall -Werror -Wextra -g3 -std=c++98
+CFLAG = -Wall -Werror -Wextra -g3 -std=c++98 -MMD
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = include
 
-NAME = Bureaucrat
+NAME = $(notdir $(PWD)) 
 
-SRC =	main.cpp \
-		Bureaucrat.cpp \
-		AForm.cpp \
-		ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp \
-		PresidentialPardonForm.cpp
+SRC = $(shell find $(SRC_DIR) -name "*.cpp")
 
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-OBJ = $(SRC:.cpp=.o)
+DEP = $(OBJ:.o=.d)
 
 all: clear_terminal $(NAME)
 	@echo "\033[1;32m💥 Compilation terminée ! 💥\033[0m"
@@ -27,15 +26,18 @@ $(NAME): $(OBJ)
 	@$(COMP) $(CFLAG) $(OBJ) -o $(NAME)
 	@echo "\033[1;32m🚀 $(NAME) généré !\033[0m"
 
-%.o: %.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	@echo "\033[1;34m📂 Compilation $<...\033[0m"
-	@$(COMP) $(CFLAG) -c $< -o $@
+	@$(COMP) $(CFLAG) -I$(INC_DIR) -c $< -o $@
 	@echo "\033[1;32m✅ $< compilé !\033[0m"
 
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
 clean: clear_terminal
-	@echo "\033[1;31m🧹 Suppression des .o...\033[0m"
-	@rm -f $(OBJ)
-	@echo "\033[1;32m🗑️ .o supprimés.\033[0m"
+	@echo "\033[1;31m🧹 Suppression des .o et .d...\033[0m"
+	@rm -rf $(OBJ_DIR)
+	@echo "\033[1;32m🗑️ .o et .d supprimés.\033[0m"
 
 fclean: clean
 	@echo "\033[1;31m🔥 Suppression $(NAME)...\033[0m"
@@ -43,5 +45,7 @@ fclean: clean
 	@echo "\033[1;32m🔥 $(NAME) supprimé.\033[0m"
 
 re: fclean all
+
+-include $(DEP)
 
 .PHONY: all clean fclean re clear_terminal
