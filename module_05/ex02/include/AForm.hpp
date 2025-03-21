@@ -30,7 +30,7 @@ class AForm {
             // public methods
             public:
                 // what method
-                const char *what() const throw();
+                virtual const char *what() const throw();
         };
 
         // GradeTooLowException class herited from std::exception
@@ -38,8 +38,15 @@ class AForm {
             // public methods
             public:
                 // what method
-                const char *what() const throw();
+                virtual const char *what() const throw();
         };
+		// FormNotSignedException class herited from std::exception
+		class FormNotSignedException : public std::exception {
+			// public methods
+			public:
+				// what method
+				virtual const char *what() const throw();
+		};
 
         // constructor
         AForm(const std::string name, std::string target, int gradeSign, int gradeExec);

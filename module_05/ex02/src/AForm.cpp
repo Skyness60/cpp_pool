@@ -78,6 +78,11 @@ const char *AForm::GradeTooLowException::what() const throw() {
     return BOLD_RED "Grade too low" RESET;
 }
 
+// what method
+const char *AForm::FormNotSignedException::what() const throw() {
+	return BOLD_RED "Form is not signed" RESET;
+}
+
 // output stream operator overload
 std::ostream &operator<<(std::ostream &out, const AForm &form) {
     out << BOLD_BLUE "AForm " << form.getName() << " is signed: " << form.getSigned() << " with grade to sign: " << form.getGradeSign() << " and grade to execute: " << form.getGradeExec() << RESET;

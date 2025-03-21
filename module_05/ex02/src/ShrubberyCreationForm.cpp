@@ -26,11 +26,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    if (!this->getSigned())
-		return (std::cout << "Form is not signed" << std::endl, void());
-    if (executor.getGrade() > this->getGradeExec()) {
-    	throw AForm::GradeTooLowException();
-	}
+	(void)executor;
 	std::ofstream file((this->getTarget() + "_shrubbery").c_str());
     if (!file) {
         std::cout << "Error: could not create file" << std::endl;

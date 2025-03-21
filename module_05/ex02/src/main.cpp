@@ -167,8 +167,8 @@ int main() {
 					break;
 				}
 				catch (std::exception &e) {
-					std::cout << BOLD_RED << "Finally Bureaucrat is not created because : " << RESET << std::endl;
-					std::cout << BOLD_RED << e.what() << RESET << std::endl;
+					std::cerr << BOLD_RED << "Finally Bureaucrat is not created because : " << RESET << std::endl;
+					std::cerr << BOLD_RED << e.what() << RESET << std::endl;
 				}
 
 			}
@@ -229,8 +229,8 @@ int main() {
 					break;
 				}
 				catch (std::exception &e) {
-					std::cout << BOLD_RED << "Finally Form is not created because : " << RESET << std::endl;
-					std::cout << BOLD_RED << e.what() << RESET << std::endl;
+					std::cerr << BOLD_RED << "Finally Form is not created because : " << RESET << std::endl;
+					std::cerr << BOLD_RED << e.what() << RESET << std::endl;
 				}
 
 			}
@@ -374,8 +374,8 @@ int main() {
 							}
 							catch (std::exception &e) {
 								clearScreen();
-								std::cout << BOLD_RED << "Finally Form is not signed because : " << RESET << std::endl;
-								std::cout << BOLD_RED << e.what() << RESET << std::endl;
+								std::cerr << BOLD_RED << "Finally Form is not signed because : " << RESET << std::endl;
+								std::cerr << BOLD_RED << e.what() << RESET << std::endl;
 							}
 						}
 					}
@@ -532,8 +532,8 @@ int main() {
 						}
 						catch (std::exception &e) {
 							clearScreen();
-							std::cout << BOLD_RED << "Finally Form is not signed because : " << RESET << std::endl;
-							std::cout << BOLD_RED << e.what() << RESET << std::endl;
+							std::cerr << BOLD_RED << "Finally Form is not signed because : " << RESET << std::endl;
+							std::cerr << BOLD_RED << e.what() << RESET << std::endl;
 						}
 					}
 				}

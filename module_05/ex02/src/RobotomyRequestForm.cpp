@@ -27,11 +27,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-    if (!this->getSigned())
-		return (std::cout << "Form is not signed" << std::endl, void());
-    if (executor.getGrade() > this->getGradeExec()) {
-    	throw AForm::GradeTooLowException();
-	}
+	(void)executor;
 	std::cout << BOLD_BLUE "🤖 Drilling... BZZZT! 🤖" RESET << std::endl;
 	std::srand(std::time(0));
 	if (std::rand() % 2 == 0)
