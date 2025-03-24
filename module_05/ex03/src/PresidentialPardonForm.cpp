@@ -1,7 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential", target, 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", target, 25, 5) {
     std::cout << BOLD_GREEN "constructor PresidentialPardonForm " << this->name << " created" RESET << std::endl;
 }
 
