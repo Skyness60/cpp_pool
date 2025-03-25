@@ -72,7 +72,7 @@ int main() {
 	int countF = 0;
     std::cout << BOLD_BLUE "Welcome to the Bureaucrat program!" RESET << std::endl;
     std::pair<std::string, int> dataB[100] = {};
-	Bureaucrat* bureaucrats[] = {};
+	Bureaucrat* bureaucrats[100] = {};
     std::pair<std::string, bool> dataI[100] = {};
 	Intern* interns[] = {};
     std::pair<std::string, bool> dataF[100] = {};
