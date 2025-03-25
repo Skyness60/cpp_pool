@@ -104,6 +104,7 @@ int main(int ac, char **av) {
             else
                 clearScreen();
         }
+		delete bureaucrat;
     }
     catch (std::exception &e) {
         std::cout << BOLD_RED "Error: " << e.what() << RESET << std::endl;

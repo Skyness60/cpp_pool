@@ -59,4 +59,6 @@ class Form {
         // beSigned method
         void beSigned(const Bureaucrat &bureaucrat);
 };
+
+std::ostream &operator<<(std::ostream &out, const Form &Form);
 #endif
