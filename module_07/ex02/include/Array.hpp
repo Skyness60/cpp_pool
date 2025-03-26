@@ -16,7 +16,7 @@ template <typename T>
 
 class Array {
 	public:
-		Array() : array(NULL), arraySize(0) {};
+		Array() : array(new T(0)), arraySize(0) {};
 		Array(unsigned int n) : array(new T[n]), arraySize(n) {};
 		Array(const Array &copy) : array(new T[copy.arraySize]), arraySize(copy.arraySize) {
 			for (unsigned int i = 0; i < arraySize; i++)

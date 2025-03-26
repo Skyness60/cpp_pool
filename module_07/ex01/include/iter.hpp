@@ -1,9 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
-template <typename Type>
-void iter(Type *array, int length, void (*func)(Type const &)) {
+template <typename T>
+void iter(T *array, int length, void (*func)(T const &)) {
 	for (int i = 0; i < length; i++) {
 		func(array[i]);
 	}
