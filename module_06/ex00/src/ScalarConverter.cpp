@@ -92,7 +92,7 @@ static void		error() {
 	std::cout << BOLD_RED << "double: impossible" << RESET << std::endl;
 }
 
-static void		checkInput(std::string param) {
+static void		checkInput(std::string param) {;
 	if (std::isprint(param[0]) && !std::isdigit(param[0])) {
 		if (param.length() == 1)
 			charConvert(param);
