@@ -24,6 +24,8 @@ void identify(Base *p) {
 		std::cout << BOLD_GREEN << "B" << RESET << std::endl;
 	else if (dynamic_cast<C*>(p))
 		std::cout << BOLD_GREEN << "C" << RESET << std::endl;
+	else if (dynamic_cast<A*>(p) == NULL && dynamic_cast<B*>(p) == NULL && dynamic_cast<C*>(p) == NULL)
+		std::cout << BOLD_RED << "p is null" << RESET << std::endl;
 }
 
 void identify(Base &p) {
@@ -49,6 +51,15 @@ int main() {
 	Base *base = generate();
 	identify(base);
 	identify(*base);
+
+	Base *base2 = new Base();
+	identify(base2);
+	if (base2 == NULL) {
+		std::cout << BOLD_RED << "base2 is null" << RESET << std::endl;
+	} else {
+		std::cout << BOLD_GREEN << base2 << RESET << std::endl;
+	}
 	delete base;
+	delete base2;
 	return 0;
 }
