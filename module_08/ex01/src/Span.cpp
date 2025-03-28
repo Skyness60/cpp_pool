@@ -39,21 +39,32 @@ static void checkSpan(std::vector<int> &numbers)
 		throw std::runtime_error("Not enough numbers");
 }
 
-int Span::shortestSpan()
-{
-	if (numbers.size() < 2)
-		checkSpan(numbers);
-	std::vector<int> sorted(numbers);
-	std::nth_element(sorted.begin(), sorted.begin() + 1, sorted.end());
+int Span::shortestSpan() {
+	// Vérifier que le conteneur contient au moins deux éléments
+	checkSpan(numbers);
 
-    int shortest = sorted[1] - sorted[0];
-	return shortest;
+	// Créer une copie du conteneur et trier les éléments
+	std::vector<int> sorted = numbers;
+	std::sort(sorted.begin(), sorted.end());
+
+	// Initialiser l'écart minimal à une valeur très élevée
+	unsigned int minSpan = 4294967295;
+
+	// Parcourir la liste triée et calculer les écarts entre chaque paire adjacente
+	for (size_t i = 1; i < sorted.size(); ++i) {
+		unsigned int span = sorted[i] - sorted[i - 1];
+		if (span < minSpan) {
+			minSpan = span;
+		}
+	}
+
+	return minSpan;
 }
+
 
 int Span::longestSpan()
 {
-	if (numbers.size() < 2)
-		checkSpan(numbers);
+	checkSpan(numbers);
 	int minVal = *std::min_element(numbers.begin(), numbers.end());
 	int maxVal = *std::max_element(numbers.begin(), numbers.end());
 
