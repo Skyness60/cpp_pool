@@ -8,14 +8,14 @@
 template <typename T>
 void testContainer(const std::string &name, T &container, int searchValue)
 {
-    std::cout << "🔎 Test avec " << name << "..." << std::endl;
-    try {
-        typename T::iterator it = easyfind(container, searchValue);
-        std::cout << "✅ Trouvé dans " << name << " : " << *it << std::endl;
-    } catch (const std::exception &e) {
-        std::cout << "❌ Erreur dans " << name << " : " << e.what() << std::endl;
-    }
-    std::cout << std::endl;
+	std::cout << BOLD_CYAN << "🔎 Test avec " << name << "..." << RESET << std::endl;
+	try {
+		typename T::iterator it = easyfind(container, searchValue);
+		std::cout << BOLD_GREEN << "✅ Trouvé dans " << name << " : " << *it << RESET << std::endl;
+	} catch (const std::exception &e) {
+		std::cout << BOLD_RED << "❌ Erreur dans " << name << " : " << e.what() << RESET << std::endl;
+	}
+	std::cout << std::endl;
 }
 
 int main(int ac, char **av)
@@ -47,7 +47,6 @@ int main(int ac, char **av)
     testContainer("vector", vec, value);
     testContainer("list", lst, value);
     testContainer("deque", deq, value);
-
     testContainer("string", str, value + '0');
 
     return 0;

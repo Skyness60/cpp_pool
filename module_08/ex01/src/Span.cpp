@@ -33,25 +33,27 @@ void Span::addNumberIterator(std::vector<int>::iterator begin, std::vector<int>:
 	numbers.insert(numbers.end(), begin, end);
 }
 
-int Span::shortestSpan()
+static void checkSpan(std::vector<int> &numbers)
 {
 	if (numbers.size() < 2)
 		throw std::runtime_error("Not enough numbers");
+}
 
-	std::vector<int> sorted(numbers); // Copie nécessaire pour trier
-	std::sort(sorted.begin(), sorted.end());
+int Span::shortestSpan()
+{
+	if (numbers.size() < 2)
+		checkSpan(numbers);
+	std::vector<int> sorted(numbers);
+	std::nth_element(sorted.begin(), sorted.begin() + 1, sorted.end());
 
-	int shortest = sorted[1] - sorted[0];
-	for (size_t i = 2; i < sorted.size(); i++)
-		shortest = std::min(shortest, sorted[i] - sorted[i - 1]);
+    int shortest = sorted[1] - sorted[0];
 	return shortest;
 }
 
 int Span::longestSpan()
 {
 	if (numbers.size() < 2)
-		throw std::runtime_error("Not enough numbers");
-
+		checkSpan(numbers);
 	int minVal = *std::min_element(numbers.begin(), numbers.end());
 	int maxVal = *std::max_element(numbers.begin(), numbers.end());
 
@@ -65,7 +67,7 @@ std::vector<int> Span::getNumbers()
 
 std::vector<int> Span::getSortedNumbers()
 {
-	std::vector<int> sorted(numbers);
-	std::sort(sorted.begin(), sorted.end());
-	return sorted;
+    std::vector<int> sorted(numbers);
+    std::sort(sorted.begin(), sorted.end());
+    return sorted;
 }

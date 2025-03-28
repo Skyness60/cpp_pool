@@ -3,35 +3,30 @@
 #include <ctime>
 #include <fstream>
 
-// int main()
-// {
-// 	Span sp = Span(5);
-
-// 	sp.addNumber(5);
-// 	sp.addNumber(3);
-// 	sp.addNumber(17);
-// 	sp.addNumber(9);
-// 	sp.addNumber(11);
-
-// 	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-// 	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
-
-// 	return 0;
-// }
-
 void generate(std::vector<int>& vec, int min, int max) {
 	for (size_t i = 0; i < vec.size(); ++i) {
 		vec[i] = min + std::rand() % (max - min + 1);
 	}
 }
 
-int	main()
-{
+int	main(int ac, char **av) {
+	if (ac not_eq 2) {
+		std::cout << BOLD_RED << "Usage: ./span [number]" << RESET << std::endl;
+		return 1;
+	}
+	int n = std::atoi(av[1]);
+	if (n < 0) {
+		std::cout << BOLD_RED << "Invalid number" << RESET << std::endl;
+		return 1;
+	}
 	std::srand(std::time(0));
-	Span sp = Span(1000000);
-	std::vector<int> vec(1000000);
-	generate(vec, 0, 1000000);
+	Span sp = Span(n);
+	std::vector<int> vec(n);
+	generate(vec, 0, n);
 	sp.addNumberIterator(vec.begin(), vec.end());
+	std::cout << BOLD_GREEN << "Shortest span: " << RESET << sp.shortestSpan() << std::endl;
+	std::cout << BOLD_BLUE << "Longest span: " << RESET << sp.longestSpan() << std::endl;
+	std::cout << BOLD_YELLOW << "Writing numbers to output.txt and sorted numbers to Sortoutput.txt" << RESET << std::endl;
 	std::ofstream outFile("output.txt");
 	if (outFile.is_open()) {
 		std::vector<int> numb = sp.getNumbers();
@@ -40,7 +35,7 @@ int	main()
 		}
 		outFile.close();
 	} else {
-		std::cerr << "Unable to open file for writing." << std::endl;
+		std::cout << BOLD_RED << "Unable to open file for writing." << RESET << std::endl;
 	}
 	std::ofstream outFileSort("Sortoutput.txt");
 	if (outFileSort.is_open()) {
@@ -50,10 +45,9 @@ int	main()
 		}
 		outFileSort.close();
 	} else {
-		std::cerr << "Unable to open file for writing." << std::endl;
+		std::cout << BOLD_RED << "Unable to open file for writing." << RESET << std::endl;
 	}
-	std::cout << std::endl;
-	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+	std::cout << BOLD_GREEN << "Done!" << RESET << std::endl;
+
 	return 0;
 }
