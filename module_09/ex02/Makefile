@@ -4,7 +4,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = include
 
-NAME = btc
+NAME = $(notdir $(PWD)) 
 
 SRC = $(shell find $(SRC_DIR) -name "*.cpp")
 
