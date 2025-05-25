@@ -54,6 +54,13 @@
 		"cinttypes": "cpp",
 		"list": "cpp",
 		"set": "cpp",
-		"map": "cpp"
+		"map": "cpp",
+		"bitset": "cpp",
+		"charconv": "cpp",
+		"cstring": "cpp",
+		"regex": "cpp",
+		"variant": "cpp",
+		"format": "cpp",
+		"text_encoding": "cpp"
 	}
 }

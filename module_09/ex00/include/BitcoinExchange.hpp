@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
 
 #include <iostream>
 #include <fstream>
@@ -19,53 +20,78 @@
 # define BOLD_CYAN  "\033[1m\033[36m"     /* Bold Cyan */
 # define BOLD_WHITE  "\033[1m\033[37m"    /* Bold White */
 
-enum file_type {
-	DATABASE,
-	FILENAME
-};
+// Utility functions
+bool isValidDate(const std::string &date);
+void trimCell(std::string &cell);
 
 class ADataSource {
-	protected:
-		std::ifstream		&file;
-		std::map<std::string, double> &data;
-		bool checkHeader(std::string header, file_type type);
-	public:
-		ADataSource(std::ifstream &file, std::map<std::string, double> &data);
+	private:
 		ADataSource(const ADataSource &copy);
 		ADataSource &operator=(const ADataSource &copy);
-		virtual ~ADataSource();
-		virtual void openFile(std::ifstream &database, std::map<std::string, double> &data) = 0;
-		std::map<std::string, double> getData() const;
-		void printData(std::map<std::string, double> &data, file_type type);
+		
+	protected:
+		std::map<std::string, double> data;
+		char delimiter;
+		std::string expectedHeader1;
+		std::string expectedHeader2;
+		
+		void parseLine(const std::string &line);
+		
+	public:
+		ADataSource(char delim, const std::string &header1, const std::string &header2);
+		virtual ~ADataSource() {}
+		
+		bool checkHeader(const std::string &header) const;
+		void openFile(const std::string &filename);
+		const std::map<std::string, double> &getData() const;
 };
 
 class BitcoinDatabase : public ADataSource {
-	public:
-		BitcoinDatabase(std::ifstream &file, std::map<std::string, double> &data);
+	private:
 		BitcoinDatabase(const BitcoinDatabase &copy);
 		BitcoinDatabase &operator=(const BitcoinDatabase &copy);
-		virtual ~BitcoinDatabase();
-		void openFile(std::ifstream &database, std::map<std::string, double> &data);
+		
+	public:
+		BitcoinDatabase();
+		virtual ~BitcoinDatabase() {}
 };
 
 class InputDatabase : public ADataSource {
-	public:
-		InputDatabase(std::ifstream &file, std::map<std::string, double> &data);
+	private:
 		InputDatabase(const InputDatabase &copy);
 		InputDatabase &operator=(const InputDatabase &copy);
-		virtual ~InputDatabase();
-		void openFile(std::ifstream &database, std::map<std::string, double> &data);
+		
+	public:
+		InputDatabase();
+		virtual ~InputDatabase() {}
 };
 
 class BitcoinExchange {
 	private:
-		std::map<std::string, double> &inputData;
-		std::map<std::string, double> &bitcoinData;
-	public:
-		BitcoinExchange(std::map<std::string, double> &bitcoinData, std::map<std::string, double> &inputData);
+		const std::map<std::string, double> &bitcoinData;
+		
 		BitcoinExchange(const BitcoinExchange &copy);
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
-		virtual ~BitcoinExchange();
-		BitcoinExchange(std::ifstream &file, std::ifstream &database);
-		void processData();
+		
+		struct ValidationResult {
+			bool isValid;
+			std::string errorMessage;
+			std::string date;
+			double value;
+			
+			ValidationResult() : isValid(false), errorMessage(""), date(""), value(0.0) {}
+			ValidationResult(bool valid, const std::string &error, const std::string &d, double v)
+				: isValid(valid), errorMessage(error), date(d), value(v) {}
+		};
+		
+		ValidationResult validateLine(const std::string &line) const;
+		double findExchangeRate(const std::string &date) const;
+		
+	public:
+		BitcoinExchange(const std::map<std::string, double> &bitcoinData);
+		virtual ~BitcoinExchange() {}
+		
+		void processData(const std::string& inputFilePath) const;
 };
+
+#endif
