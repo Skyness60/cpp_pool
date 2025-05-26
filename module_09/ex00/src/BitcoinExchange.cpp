@@ -42,6 +42,24 @@ bool isValidDate(const std::string &date) {
 ADataSource::ADataSource(char delim, const std::string &header1, const std::string &header2) 
 	: delimiter(delim), expectedHeader1(header1), expectedHeader2(header2) {}
 
+ADataSource::ADataSource(const ADataSource &copy)
+	: data(copy.data),
+	  delimiter(copy.delimiter),
+	  expectedHeader1(copy.expectedHeader1),
+	  expectedHeader2(copy.expectedHeader2) {}
+
+ADataSource &ADataSource::operator=(const ADataSource &copy) {
+	if (this != &copy) {
+		delimiter = copy.delimiter;
+		expectedHeader1 = copy.expectedHeader1;
+		expectedHeader2 = copy.expectedHeader2;
+		data = copy.data;
+	}
+	return *this;
+}
+
+ADataSource::~ADataSource() {}
+
 bool ADataSource::checkHeader(const std::string &header) const {
 	if (std::count(header.begin(), header.end(), delimiter) != 1)
 		return false;
@@ -98,12 +116,52 @@ const std::map<std::string, double> &ADataSource::getData() const {
 // BitcoinDatabase
 BitcoinDatabase::BitcoinDatabase() : ADataSource(',', "date", "exchange_rate") {}
 
+BitcoinDatabase::BitcoinDatabase(const BitcoinDatabase &copy) 
+	: ADataSource(copy.delimiter, copy.expectedHeader1, copy.expectedHeader2) {}
+
+BitcoinDatabase &BitcoinDatabase::operator=(const BitcoinDatabase &copy) {
+	if (this != &copy) {
+		delimiter = copy.delimiter;
+		expectedHeader1 = copy.expectedHeader1;
+		expectedHeader2 = copy.expectedHeader2;
+		data = copy.data;
+	}
+	return *this;
+}
+
+BitcoinDatabase::~BitcoinDatabase() {}
+
 // InputDatabase
 InputDatabase::InputDatabase() : ADataSource('|', "date", "value") {}
+
+InputDatabase::InputDatabase(const InputDatabase &copy) 
+	: ADataSource(copy.delimiter, copy.expectedHeader1, copy.expectedHeader2) {}
+
+InputDatabase &InputDatabase::operator=(const InputDatabase &copy) {
+	if (this != &copy) {
+		delimiter = copy.delimiter;
+		expectedHeader1 = copy.expectedHeader1;
+		expectedHeader2 = copy.expectedHeader2;
+		data = copy.data;
+	}
+	return *this;
+}
+
+InputDatabase::~InputDatabase() {}
 
 // BitcoinExchange
 BitcoinExchange::BitcoinExchange(const std::map<std::string, double> &bitcoinData) 
 	: bitcoinData(bitcoinData) {}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
+	: bitcoinData(copy.bitcoinData) {}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
+	(void)copy;  // suppress unused-parameter warning
+	return *this;
+}
+
+BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange::ValidationResult BitcoinExchange::validateLine(const std::string &line) const {
 	ValidationResult result;

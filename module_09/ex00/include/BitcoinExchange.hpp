@@ -25,10 +25,7 @@ bool isValidDate(const std::string &date);
 void trimCell(std::string &cell);
 
 class ADataSource {
-	private:
-		ADataSource(const ADataSource &copy);
-		ADataSource &operator=(const ADataSource &copy);
-		
+
 	protected:
 		std::map<std::string, double> data;
 		char delimiter;
@@ -39,7 +36,9 @@ class ADataSource {
 		
 	public:
 		ADataSource(char delim, const std::string &header1, const std::string &header2);
-		virtual ~ADataSource() {}
+		ADataSource(const ADataSource &copy);
+		ADataSource &operator=(const ADataSource &copy);
+		virtual ~ADataSource();
 		
 		bool checkHeader(const std::string &header) const;
 		void openFile(const std::string &filename);
@@ -47,32 +46,25 @@ class ADataSource {
 };
 
 class BitcoinDatabase : public ADataSource {
-	private:
-		BitcoinDatabase(const BitcoinDatabase &copy);
-		BitcoinDatabase &operator=(const BitcoinDatabase &copy);
-		
 	public:
 		BitcoinDatabase();
-		virtual ~BitcoinDatabase() {}
+		BitcoinDatabase(const BitcoinDatabase &copy);
+		BitcoinDatabase &operator=(const BitcoinDatabase &copy);
+		virtual ~BitcoinDatabase();
 };
 
 class InputDatabase : public ADataSource {
-	private:
-		InputDatabase(const InputDatabase &copy);
-		InputDatabase &operator=(const InputDatabase &copy);
-		
 	public:
 		InputDatabase();
-		virtual ~InputDatabase() {}
+		InputDatabase(const InputDatabase &copy);
+		InputDatabase &operator=(const InputDatabase &copy);
+		virtual ~InputDatabase();
 };
 
 class BitcoinExchange {
 	private:
 		const std::map<std::string, double> &bitcoinData;
-		
-		BitcoinExchange(const BitcoinExchange &copy);
-		BitcoinExchange &operator=(const BitcoinExchange &copy);
-		
+				
 		struct ValidationResult {
 			bool isValid;
 			std::string errorMessage;
@@ -89,7 +81,9 @@ class BitcoinExchange {
 		
 	public:
 		BitcoinExchange(const std::map<std::string, double> &bitcoinData);
-		virtual ~BitcoinExchange() {}
+		BitcoinExchange(const BitcoinExchange &copy);
+		BitcoinExchange &operator=(const BitcoinExchange &copy);
+		virtual ~BitcoinExchange();
 		
 		void processData(const std::string& inputFilePath) const;
 };
