@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <climits>
 
 RPN::RPN() : stack(), result(0) {}
 
@@ -64,20 +65,27 @@ bool RPN::isOperator(char c) const {
 }
 
 void RPN::processInput(std::string input) {
-	for (int i = 0; i < (int)input.size(); i++) {
-		if (input[i] > 9)
-				throw(NumberSuperiorToNineException());
-		else if (input[i] < 0)
-				throw(NumberInferiorToZeroException());
-		if (isdigit(input[i]) == 0 && isOperator(input[i]) == false && input[i] != ' ')
-			throw(WrongInputException());
-
-		if (isdigit(input[i]) != 0 && input[i + 1] && input[i + 1] != ' ')
-			throw(WrongInputException());
-
-		if (isOperator(input[i]) && input[i + 1] && input[i + 1] != ' ')
-			throw(WrongInputException());
-	}
+    for (int i = 0; i < (int)input.size(); i++) {
+        if (isdigit(input[i])) {
+            int value = input[i] - '0';
+            if (value > 9)
+                throw(NumberSuperiorToNineException());
+            if (value < 0)
+                throw(NumberInferiorToZeroException());
+            if (input[i + 1] && input[i + 1] != ' ')
+                throw(WrongInputException());
+        }
+        else if (input[i] == '-' and i + 1 < (int)input.size() and isdigit(input[i + 1])) {
+            throw(NumberInferiorToZeroException());
+        }
+        else if (!isOperator(input[i]) and input[i] != ' ') {
+            throw(WrongInputException());
+        }
+        else if (isOperator(input[i])) {
+            if (input[i + 1] and input[i + 1] != ' ')
+                throw(WrongInputException());
+        }
+    }
 }
 
 void RPN::displayStack() const {
@@ -91,7 +99,7 @@ void RPN::displayStack() const {
 
 void RPN::calculate(std::string input) {
     for (int i = 0; i < (int)input.size(); i++) {
-        while (input[i] && input[i] == ' ')
+        while (input[i] and input[i] == ' ')
             i++;
 
         if (isdigit(input[i]) != 0) {
