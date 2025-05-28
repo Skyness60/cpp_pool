@@ -65,6 +65,10 @@ bool RPN::isOperator(char c) const {
 
 void RPN::processInput(std::string input) {
 	for (int i = 0; i < (int)input.size(); i++) {
+		if (input[i] > 9)
+				throw(NumberSuperiorToNineException());
+		else if (input[i] < 0)
+				throw(NumberInferiorToZeroException());
 		if (isdigit(input[i]) == 0 && isOperator(input[i]) == false && input[i] != ' ')
 			throw(WrongInputException());
 

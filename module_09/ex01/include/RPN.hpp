@@ -30,15 +30,31 @@ class DivisionByZeroException : public std::exception
 {
 public:
     const char* what() const throw() {
-        return BOLD_RED "Error: division by zero" RESET;
+        return BOLD_RED "division by zero" RESET;
     }
+};
+
+class NumberSuperiorToNineException : public std::exception 
+{
+public:
+	const char* what() const throw() {
+		return BOLD_YELLOW "number superior to 9" RESET;
+	}
+};
+
+class NumberInferiorToZeroException : public std::exception 
+{
+public:
+	const char* what() const throw() {
+		return BOLD_YELLOW "number inferior to 0" RESET;
+	}
 };
 
 class TooMuchNumbersException : public std::exception 
 {
 public:
     const char* what() const throw() {
-        return BOLD_YELLOW "Error: too many operands in expression" RESET;
+        return BOLD_YELLOW "too many operands in expression" RESET;
     }
 };
 
@@ -46,7 +62,7 @@ class NotEnoughNumbersException : public std::exception
 {
 public:
     const char* what() const throw() {
-        return BOLD_YELLOW "Error: not enough operands on stack" RESET;
+        return BOLD_YELLOW "not enough operands on stack" RESET;
     }
 };
 
@@ -54,7 +70,7 @@ class WrongInputException : public std::exception
 {
 public:
     const char* what() const throw() {
-        return BOLD_MAGENTA "Error: invalid input; only single-digit numbers and operators +-*/% allowed" RESET;
+        return BOLD_MAGENTA "invalid input; only single-digit numbers and operators +-*/% allowed" RESET;
     }
 };
 
