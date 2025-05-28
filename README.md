@@ -12,11 +12,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
 - **Concepts abordés** :
   - Définition de classes et fonctions membres
   - Flux d'entrée/sortie (`iostream`)
-  - Listes d'initialisation
-  - Mots-clés `static` et `const`
-
-📎 **UML** :  
-![UML Module 00](./images/UML_Module00.png)
 
 ---
 
@@ -31,9 +26,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Pointeurs sur fonctions
   - Utilisation de `switch` avec `fallthrough`
 
-📎 **UML** :  
-![UML Module 01](./images/UML_Module01.png)
-
 ---
 
 ### 🧰 Module 02 : Forme canonique et surcharge d'opérateurs
@@ -43,9 +35,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Forme canonique des classes (constructeur par défaut, constructeur de copie, opérateur d'affectation, destructeur)
   - Surcharge d'opérateurs
   - Gestion de la mémoire dans les classes
-
-📎 **UML** :  
-![UML Module 02](./images/UML_Module02.png)
 
 ---
 
@@ -58,9 +47,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Polymorphisme à l'exécution
   - Classes dérivées
 
-📎 **UML** :  
-![UML Module 03](./images/UML_Module03.png)
-
 ---
 
 ### ⚙️ Module 04 : Polymorphisme avancé et classes abstraites
@@ -72,9 +58,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Interfaces
   - Copie profonde (`deep copy`)
 
-📎 **UML** :  
-![UML Module 04](./images/UML_Module04.png)
-
 ---
 
 ### 📂 Module 05 : Exceptions et gestion des erreurs
@@ -84,9 +67,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Introduction aux exceptions (`try`, `catch`, `throw`)
   - Exceptions personnalisées
   - Utilisation des exceptions dans les classes abstraites
-
-📎 **UML** :  
-![UML Module 05](./images/UML_Module05.png)
 
 ---
 
@@ -99,9 +79,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Casts de réinterprétation (`reinterpret_cast`)
   - Conversion de types scalaires
 
-📎 **UML** :  
-![UML Module 06](./images/UML_Module06.png)
-
 ---
 
 ### 🧠 Module 07 : Templates
@@ -111,10 +88,7 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
   - Templates de fonctions
   - Templates de classes
   - Généricité en C++
-
-📎 **UML** :  
-![UML Module 07](./images/UML_Module07.png)
-
+  
 ---
 
 ### 🔍 Module 08 : Conteneurs
@@ -122,10 +96,7 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
 - **Objectif** : Utilisation des conteneurs de la STL.
 - **Concepts abordés** :
   - Conteneurs : `std::vector`, `std::deque`, `std::list`, `std::stack`
-
-📎 **UML** :  
-![UML Module 08](./images/UML_Module08.png)
-
+  
 ---
 
 ### 📦 Module 09 : Conteneurs et algorithmes
@@ -134,9 +105,6 @@ Bienvenue dans mon dépôt GitHub regroupant tous les modules du **C++ Pool** de
 - **Concepts abordés** :
   - Conteneurs : `std::vector`, `std::deque`, `std::map`, `std::stack`
   - Complexité algorithmique
-
-📎 **UML** :  
-![UML Module 09](./images/UML_Module09.png)
 
 ---
 
